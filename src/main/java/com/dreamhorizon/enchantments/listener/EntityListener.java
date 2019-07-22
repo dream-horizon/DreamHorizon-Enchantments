@@ -54,10 +54,8 @@ public class EntityListener implements Listener {
                     damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 100, 0));
                 } else if (level == 2) {
                     damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 160, 0));
-                    
                 } else if (level == 3) {
                     damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 240, 0));
-                    
                 }
             }
             if (attackItem.containsEnchantment(DHEnchantments.LIFE_LEECH)) {

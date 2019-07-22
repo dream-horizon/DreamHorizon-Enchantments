@@ -10,14 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LifeLeech {
-    public static final DHEnchantment LIFE_LEECH;
-
     public static DHEnchantment getEnchantmentInformation() {
-        return LIFE_LEECH;
-    }
-
-    static {
-        LIFE_LEECH = new DHEnchantment(
+        return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "lifeleech"),
             "Life Leech",
             1,

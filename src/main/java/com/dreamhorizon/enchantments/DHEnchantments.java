@@ -26,9 +26,11 @@ import java.util.List;
 
 public class DHEnchantments {
     public static final List<DHEnchantment> all = new ArrayList<>();
+    public static final DHEnchantment POISON = Poison.getEnchantmentInformation();
+    public static final DHEnchantment LIFE_LEECH = LifeLeech.getEnchantmentInformation();
 
     static {
-        all.add(LifeLeech.getEnchantmentInformation());
-        all.add(Poison.getEnchantmentInformation());
+        all.add(POISON);
+        all.add(LIFE_LEECH);
     }
 }

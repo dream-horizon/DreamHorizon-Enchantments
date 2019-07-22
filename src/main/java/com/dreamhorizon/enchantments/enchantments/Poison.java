@@ -10,14 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Poison {
-    public static final DHEnchantment POISON;
-
     public static DHEnchantment getEnchantmentInformation() {
-        return POISON;
-    }
-
-    static {
-        POISON = new DHEnchantment(
+        return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "poison"),
             "Poison",
             1,
