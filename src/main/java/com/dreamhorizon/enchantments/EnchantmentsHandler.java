@@ -16,10 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.dreamhorizon.enchantments.enchantments;
+package com.dreamhorizon.enchantments;
 
-import com.dreamhorizon.enchantments.enchantments.implementation.DHEnchantment;
-import com.dreamhorizon.enchantments.enchantments.implementation.DHEnchantments;
+import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
