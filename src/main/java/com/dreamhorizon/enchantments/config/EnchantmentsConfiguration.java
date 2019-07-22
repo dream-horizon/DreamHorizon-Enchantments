@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.dreamhorizon.example.config;
+package com.dreamhorizon.enchantments.config;
 
 import com.dreamhorizon.core.configuration.implementation.ConfigurationNode;
 
@@ -24,14 +24,14 @@ import com.dreamhorizon.core.configuration.implementation.ConfigurationNode;
  * @author Lukas Mansour
  * @since 1.0
  */
-public enum ExampleConfig implements ConfigurationNode {
-    EXAMPLE_CONFIG("example", "exampleValue", "# ExampleComment");
+public enum EnchantmentsConfiguration implements ConfigurationNode {
+    EXAMPLE_CONFIG("enchantments", "exampleValue", "# ExampleComment");
     
     private final String path;
     private final Object defaultValue;
     private final String[] comments;
     
-    ExampleConfig(String path, Object defaultValue, String... comments) {
+    EnchantmentsConfiguration(String path, Object defaultValue, String... comments) {
         this.path = path;
         this.defaultValue = defaultValue;
         this.comments = comments;
