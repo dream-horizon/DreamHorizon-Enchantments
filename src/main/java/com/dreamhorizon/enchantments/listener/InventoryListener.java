@@ -18,7 +18,7 @@
 
 package com.dreamhorizon.enchantments.listener;
 
-import com.dreamhorizon.enchantments.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.EnchantmentsHandler;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

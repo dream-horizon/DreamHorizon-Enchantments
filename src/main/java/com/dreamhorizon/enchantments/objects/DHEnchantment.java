@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.dreamhorizon.enchantments.enchantments.implementation;
+package com.dreamhorizon.enchantments.objects;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -37,16 +37,16 @@ public final class DHEnchantment extends Enchantment {
     private final List<Enchantment> conflicts;
     private final List<Material> enchantableItems;
     
-    DHEnchantment(
-            NamespacedKey key,
-            String name,
-            int minLevel,
-            int maxLevel,
-            EnchantmentTarget target,
-            boolean cursed,
-            boolean treasure,
-            List<Enchantment> conflicts,
-            List<Material> enchantableItems) {
+    public DHEnchantment(
+        NamespacedKey key,
+        String name,
+        int minLevel,
+        int maxLevel,
+        EnchantmentTarget target,
+        boolean cursed,
+        boolean treasure,
+        List<Enchantment> conflicts,
+        List<Material> enchantableItems) {
         super(key);
         this.name = name;
         this.minLevel = minLevel;

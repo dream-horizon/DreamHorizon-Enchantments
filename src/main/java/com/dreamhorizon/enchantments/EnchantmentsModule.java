@@ -30,11 +30,9 @@ import com.dreamhorizon.core.modulation.implementation.Module;
 import com.dreamhorizon.core.modulation.implementation.ModuleInfo;
 import com.dreamhorizon.enchantments.command.EnchantCommand;
 import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
-import com.dreamhorizon.enchantments.enchantments.EnchantmentsHandler;
-import com.dreamhorizon.enchantments.enchantments.implementation.DHEnchantment;
-import com.dreamhorizon.enchantments.enchantments.implementation.DHEnchantments;
 import com.dreamhorizon.enchantments.listener.EntityListener;
 import com.dreamhorizon.enchantments.listener.InventoryListener;
+import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
 
