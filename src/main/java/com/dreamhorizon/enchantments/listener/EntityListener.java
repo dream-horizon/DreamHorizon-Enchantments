@@ -19,6 +19,8 @@
 package com.dreamhorizon.enchantments.listener;
 
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.enchantments.LifeLeech;
+import com.dreamhorizon.enchantments.enchantments.Poison;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -26,8 +28,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 /**
  * @author Lukas Mansour
@@ -44,33 +44,18 @@ public class EntityListener implements Listener {
                 return;
             }
             ItemStack attackItem = equipmentSlot.getItemInMainHand();
-            if (attackItem.getType() == Material.AIR || attackItem.getType() == Material.CAVE_AIR || attackItem.getType() == Material.VOID_AIR) {
+            if (attackItem.getType() == Material.AIR
+                    || attackItem.getType() == Material.CAVE_AIR
+                    || attackItem.getType() == Material.VOID_AIR) {
                 return;
             }
             if (attackItem.containsEnchantment(DHEnchantments.POISON)) {
-                int level = attackItem.getEnchantmentLevel(DHEnchantments.POISON);
-                // 20 Ticks = 1 Second
-                if (level == 1) {
-                    damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 100, 0));
-                } else if (level == 2) {
-                    damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 160, 0));
-                } else if (level == 3) {
-                    damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 240, 0));
-                }
+                //Here we link out to the Poison class so everything about the enchantment is in a single area
+                Poison.addPoisonEffect(attackItem, damaged);
             }
             if (attackItem.containsEnchantment(DHEnchantments.LIFE_LEECH)) {
-                int level = attackItem.getEnchantmentLevel(DHEnchantments.LIFE_LEECH);
-                double healthGained = 0.0D;
-                if (level == 1) {
-                    // 5%
-                    healthGained = event.getDamage() / 20;
-                } else if (level == 2) {
-                    healthGained = (event.getDamage() / 100) * 8;
-                }
-                try {
-                    damager.setHealth(damager.getHealth() + healthGained);
-                } catch (IllegalArgumentException ignored) {
-                }
+                //Here we link out to the LifeLeech class so everything about the enchantment is in a single area
+                LifeLeech.addLifeLeechEffect(attackItem, event, damaged);
             }
         }
     }

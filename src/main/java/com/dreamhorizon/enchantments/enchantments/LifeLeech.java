@@ -1,10 +1,14 @@
 package com.dreamhorizon.enchantments.enchantments;
 
 import com.dreamhorizon.core.DHCore;
+import com.dreamhorizon.enchantments.DHEnchantments;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.EnchantmentTarget;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,5 +32,20 @@ public class LifeLeech {
                 Material.DIAMOND_SWORD
             )
         );
+    }
+
+    public static void addLifeLeechEffect(ItemStack attackItem, EntityDamageByEntityEvent event, LivingEntity damager) {
+        int level = attackItem.getEnchantmentLevel(DHEnchantments.LIFE_LEECH);
+        double healthGained = 0.0D;
+        if (level == 1) {
+            // 5%
+            healthGained = event.getDamage() / 20;
+        } else if (level == 2) {
+            healthGained = (event.getDamage() / 100) * 8;
+        }
+        try {
+            damager.setHealth(damager.getHealth() + healthGained);
+        } catch (IllegalArgumentException ignored) {
+        }
     }
 }
