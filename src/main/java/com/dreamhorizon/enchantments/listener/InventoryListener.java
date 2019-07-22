@@ -77,7 +77,7 @@ public class InventoryListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onInventoryCloseEvent(InventoryCloseEvent event) {
         for (ItemStack itemStack : event.getInventory().getContents()) {
-            if (itemStack == null || itemStack.getEnchantments().isEmpty() || !itemStack.hasItemMeta()) {
+            if (itemStack == null || !itemStack.hasItemMeta() || (!itemStack.getEnchantments().isEmpty() && !itemStack.getItemMeta().hasLore())) {
                 continue;
             }
             EnchantmentsHandler.getInstance().rebuildMeta(itemStack);
