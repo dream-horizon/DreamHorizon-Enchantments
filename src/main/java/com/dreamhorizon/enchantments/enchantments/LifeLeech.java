@@ -38,10 +38,11 @@ public class LifeLeech {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.LIFE_LEECH);
         double healthGained = 0.0D;
         if (level == 1) {
-            // 5%
-            healthGained = event.getDamage() / 20;
+            // 10%
+            healthGained = (event.getDamage() / 100) * 10;
         } else if (level == 2) {
-            healthGained = (event.getDamage() / 100) * 8;
+            // 20%
+            healthGained = (event.getDamage() / 100) * 20;
         }
         try {
             damager.setHealth(damager.getHealth() + healthGained);
