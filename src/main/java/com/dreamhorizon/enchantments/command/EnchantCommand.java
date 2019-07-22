@@ -37,7 +37,7 @@ import org.bukkit.inventory.ItemStack;
  */
 @CommandAlias("dhenchantments|dhe|dhenchantment|dhenchant|dhenchants|dreamhorizonenchants")
 public class EnchantCommand extends DHCommand {
-    @Default
+    
     @CommandAlias("enchant|e")
     @CommandPermission("dhenchantments.enchant")
     @CommandCompletion("@dhenchantments @dhenchantmentlevel @boolean")
@@ -56,9 +56,19 @@ public class EnchantCommand extends DHCommand {
                         if (unsafe) {
                             newHandItem.addUnsafeEnchantment(enchantment, level);
                         } else {
+                            // TODO: Customize message
                             player.sendMessage("The requested enchantment conflicts with " + enchantmentPresent.getName());
                         }
                     }
+                    if (level > enchantment.getMaxLevel()) {
+                        if (unsafe) {
+                            newHandItem.addUnsafeEnchantment(enchantment, level);
+                        } else {
+                            // TODO: Customize message
+                            player.sendMessage("The maximum level for " + enchantment.getName() + " is " + enchantment.getMaxLevel());
+                        }
+                    }
+                    newHandItem.addEnchantment(enchantment, level);
                 }
             } else {
                 newHandItem.addEnchantment(enchantment, level);
@@ -66,8 +76,10 @@ public class EnchantCommand extends DHCommand {
             EnchantmentsHandler.getInstance().rebuildMeta(newHandItem);
             player.getInventory().setItemInMainHand(newHandItem);
         } else {
+            // TODO: Customize message
             player.sendMessage("This item cannot be enchanted with this enchantment.");
         }
+        // TODO: Customize message
         player.sendMessage("Enchanted hopefully.");
     }
 }

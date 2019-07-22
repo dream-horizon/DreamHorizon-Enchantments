@@ -68,13 +68,6 @@ public class InventoryListener implements Listener {
             }
             EnchantmentsHandler.getInstance().rebuildMeta(itemStack);
         }
-        ItemStack itemStackCursor = event.getPlayer().getItemOnCursor();
-        if (itemStackCursor.getType() != Material.AIR && itemStackCursor.getType() != Material.CAVE_AIR && itemStackCursor.getType() != Material.VOID_AIR) {
-            if (!itemStackCursor.getEnchantments().isEmpty() && itemStackCursor.hasItemMeta()) {
-                EnchantmentsHandler.getInstance().rebuildMeta(itemStackCursor);
-                event.getPlayer().setItemOnCursor(itemStackCursor);
-            }
-        }
         if (event.getPlayer() instanceof Player) {
             ((Player) event.getPlayer()).updateInventory();
         }
@@ -94,13 +87,6 @@ public class InventoryListener implements Listener {
                 continue;
             }
             EnchantmentsHandler.getInstance().rebuildMeta(itemStack);
-        }
-        ItemStack itemStackCursor = event.getPlayer().getItemOnCursor();
-        if (itemStackCursor.getType() != Material.AIR && itemStackCursor.getType() != Material.CAVE_AIR && itemStackCursor.getType() != Material.VOID_AIR) {
-            if (!itemStackCursor.getEnchantments().isEmpty() && itemStackCursor.hasItemMeta()) {
-                EnchantmentsHandler.getInstance().rebuildMeta(itemStackCursor);
-                event.getPlayer().setItemOnCursor(itemStackCursor);
-            }
         }
         if (event.getPlayer() instanceof Player) {
             ((Player) event.getPlayer()).updateInventory();
@@ -128,7 +114,6 @@ public class InventoryListener implements Listener {
                 event.getPlayer().setItemOnCursor(itemStackCursor);
             }
         }
-        
         event.getPlayer().updateInventory();
     }
     
@@ -171,9 +156,6 @@ public class InventoryListener implements Listener {
                 EnchantmentsHandler.getInstance().rebuildMeta(itemStackCursor);
                 event.getWhoClicked().setItemOnCursor(itemStackCursor);
             }
-        }
-        if (event.getWhoClicked() instanceof Player) {
-            ((Player) event.getWhoClicked()).updateInventory();
         }
     }
 }

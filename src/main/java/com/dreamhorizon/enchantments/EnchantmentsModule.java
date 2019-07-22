@@ -65,8 +65,12 @@ public class EnchantmentsModule extends Module {
     }
     
     @Override
-    public void onEnable() {
+    public void onLoad() {
         enchantmentsHandler = EnchantmentsHandler.getInstance();
+    }
+    
+    @Override
+    public void onEnable() {
     }
     
     @Override
@@ -87,6 +91,9 @@ public class EnchantmentsModule extends Module {
         map.put("dhenchantmentlevel", context -> {
             DHEnchantment enchantment = context.getContextValue(DHEnchantment.class);
             List<String> output = new ArrayList<>();
+            if (enchantment == null) {
+                return output;
+            }
             for (int i = enchantment.getStartLevel(); i <= enchantment.getMaxLevel(); i++) {
                 output.add(String.valueOf(i));
             }
@@ -101,6 +108,9 @@ public class EnchantmentsModule extends Module {
         DHCore dhCore = DHCore.getPlugin(DHCore.class);
         map.put(DHEnchantment.class, context -> {
             String enchantName = context.popFirstArg();
+            if (enchantName.trim().isEmpty()) {
+                return null;
+            }
             if (DHEnchantment.getByKey(new NamespacedKey(dhCore, enchantName)) instanceof DHEnchantment) {
                 return DHEnchantment.getByKey(new NamespacedKey(dhCore, enchantName));
             } else {
