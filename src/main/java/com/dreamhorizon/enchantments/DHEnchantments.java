@@ -17,10 +17,7 @@
  */
 
 package com.dreamhorizon.enchantments;
-import com.dreamhorizon.enchantments.enchantments.Exhaust;
-import com.dreamhorizon.enchantments.enchantments.LifeLeech;
-import com.dreamhorizon.enchantments.enchantments.Milky;
-import com.dreamhorizon.enchantments.enchantments.Poison;
+import com.dreamhorizon.enchantments.enchantments.*;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 
 import java.util.ArrayList;
@@ -35,11 +32,13 @@ public class DHEnchantments {
     public static final DHEnchantment LIFE_LEECH = LifeLeech.getEnchantmentInformation();
     public static final DHEnchantment EXHAUST = Exhaust.getEnchantmentInformation();
     public static final DHEnchantment MILKY = Milky.getEnchantmentInformation();
+    public static final DHEnchantment CANNIBALISM = Cannibalism.getEnchantmentInformation();
 
     static {
         all.add(POISON);
         all.add(LIFE_LEECH);
         all.add(MILKY);
         all.add(EXHAUST);
+        all.add(CANNIBALISM);
     }
 }
