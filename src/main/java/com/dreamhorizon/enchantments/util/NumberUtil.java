@@ -17,6 +17,10 @@
  */
 package com.dreamhorizon.enchantments.util;
 
+/**
+ * @author Collin Herber
+ * @version 1.0
+ */
 public class NumberUtil {
     public static double getRandomNumber(int min, int max) {
         return (Math.random() * ((max - min) + 1)) + min;

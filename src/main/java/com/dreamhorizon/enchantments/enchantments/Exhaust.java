@@ -32,6 +32,10 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author Collin Herber
+ * @version 1.0
+ */
 public class Exhaust {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
@@ -59,7 +63,7 @@ public class Exhaust {
                 )
         );
     }
-
+    
     public static void addExhaustEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.EXHAUST);
         double chance = NumberUtil.getRandomNumber(0, 100);

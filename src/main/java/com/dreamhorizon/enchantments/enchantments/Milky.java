@@ -29,10 +29,15 @@ import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * @author Collin Herber
+ * @version 1.0
+ */
 public class Milky {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
@@ -60,14 +65,14 @@ public class Milky {
                 )
         );
     }
-
+    
     public static void addMilkyEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.MILKY);
         double chance = NumberUtil.getRandomNumber(0, 100);
         if (level == 1) {
             if (chance <= 25) { //25%
                 Collection<PotionEffect> effects = damaged.getActivePotionEffects();
-                for(PotionEffect effect : effects) {
+                for (PotionEffect effect : effects) {
                     if (Enums.getIfPresent(PotionEffectType.BUFFS.class, effect.getType().getName()).isPresent()) {
                         damaged.removePotionEffect(effect.getType());
                     }
@@ -76,7 +81,7 @@ public class Milky {
         } else if (level == 2) {
             if (chance <= 35) { //35%
                 Collection<PotionEffect> effects = damaged.getActivePotionEffects();
-                for(PotionEffect effect : effects) {
+                for (PotionEffect effect : effects) {
                     if (Enums.getIfPresent(PotionEffectType.BUFFS.class, effect.getType().getName()).isPresent()) {
                         damaged.removePotionEffect(effect.getType());
                     }
