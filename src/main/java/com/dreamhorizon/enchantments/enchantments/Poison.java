@@ -32,28 +32,24 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * @author Collin Herber
- * @version 1.0
- */
 public class Poison {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
-                new NamespacedKey(DHCore.getPlugin(DHCore.class), "poison"),
-                "Poison",
-                1,
-                3,
-                EnchantmentTarget.WEAPON,
-                false,
-                false,
-                new ArrayList<>(),
-                Arrays.asList(
-                        Material.WOODEN_AXE, Material.WOODEN_SWORD,
-                        Material.STONE_AXE, Material.STONE_SWORD,
-                        Material.IRON_AXE, Material.IRON_SWORD,
-                        Material.GOLDEN_AXE, Material.GOLDEN_SWORD,
-                        Material.DIAMOND_AXE, Material.DIAMOND_SWORD
-                )
+            new NamespacedKey(DHCore.getPlugin(DHCore.class), "poison"),
+            "Poison",
+            1,
+            3,
+            EnchantmentTarget.WEAPON,
+            false,
+            false,
+            new ArrayList<>(),
+            Arrays.asList(
+                Material.WOODEN_AXE, Material.WOODEN_SWORD,
+                Material.STONE_AXE, Material.STONE_SWORD,
+                Material.IRON_AXE, Material.IRON_SWORD,
+                Material.GOLDEN_AXE, Material.GOLDEN_SWORD,
+                Material.DIAMOND_AXE, Material.DIAMOND_SWORD
+            )
         );
     }
     

@@ -29,10 +29,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * @author Lukas Mansour
- * @since 1.0
- */
 public class EntityListener implements Listener {
     @EventHandler
     public void onPlayerAttackPlayer(EntityDamageByEntityEvent event) {
@@ -44,8 +40,8 @@ public class EntityListener implements Listener {
                 return;
             }
             if (attackItem.getType() == Material.AIR
-                    || attackItem.getType() == Material.CAVE_AIR
-                    || attackItem.getType() == Material.VOID_AIR) {
+                || attackItem.getType() == Material.CAVE_AIR
+                || attackItem.getType() == Material.VOID_AIR) {
                 return;
             }
             if (attackItem.containsEnchantment(DHEnchantments.POISON)) {
@@ -54,11 +50,11 @@ public class EntityListener implements Listener {
             if (attackItem.containsEnchantment(DHEnchantments.LIFE_LEECH)) {
                 LifeLeech.addLifeLeechEffect(attackItem, event, damaged);
             }
-
+            
             if (attackItem.containsEnchantment(DHEnchantments.EXHAUST)) {
                 Exhaust.addExhaustEffect(attackItem, damaged);
             }
-
+            
             if (attackItem.containsEnchantment(DHEnchantments.MILKY)) {
                 Milky.addMilkyEffect(attackItem, damaged);
             }

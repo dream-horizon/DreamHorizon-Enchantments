@@ -34,35 +34,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * @author Collin Herber
- * @version 1.0
- */
 public class Milky {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
-                new NamespacedKey(DHCore.getPlugin(DHCore.class), "milky"),
-                "Milky",
-                1,
-                2,
-                EnchantmentTarget.WEAPON,
-                false,
-                false,
-                new ArrayList<>(),
-                Arrays.asList(
-                        Material.WOODEN_SWORD,
-                        Material.STONE_SWORD,
-                        Material.IRON_SWORD,
-                        Material.GOLDEN_SWORD,
-                        Material.DIAMOND_SWORD,
-                        Material.WOODEN_AXE,
-                        Material.STONE_AXE,
-                        Material.IRON_AXE,
-                        Material.GOLDEN_AXE,
-                        Material.DIAMOND_AXE,
-                        Material.BOW,
-                        Material.CROSSBOW
-                )
+            new NamespacedKey(DHCore.getPlugin(DHCore.class), "milky"),
+            "Milky",
+            1,
+            2,
+            EnchantmentTarget.WEAPON,
+            false,
+            false,
+            new ArrayList<>(),
+            Arrays.asList(
+                Material.WOODEN_SWORD,
+                Material.STONE_SWORD,
+                Material.IRON_SWORD,
+                Material.GOLDEN_SWORD,
+                Material.DIAMOND_SWORD,
+                Material.WOODEN_AXE,
+                Material.STONE_AXE,
+                Material.IRON_AXE,
+                Material.GOLDEN_AXE,
+                Material.DIAMOND_AXE,
+                Material.BOW,
+                Material.CROSSBOW
+            )
         );
     }
     

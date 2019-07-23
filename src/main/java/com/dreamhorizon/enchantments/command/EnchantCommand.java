@@ -31,10 +31,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * @author Lukas Mansour
- * @since 1.0
- */
+
 @CommandAlias("dhenchantments|dhe|dhenchantment|dhenchant|dhenchants|dreamhorizonenchants")
 public class EnchantCommand extends DHCommand {
     
