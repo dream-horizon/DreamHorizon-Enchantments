@@ -19,15 +19,13 @@
 package com.dreamhorizon.enchantments.listener;
 
 import com.dreamhorizon.enchantments.DHEnchantments;
-import com.dreamhorizon.enchantments.enchantments.Exhaust;
-import com.dreamhorizon.enchantments.enchantments.LifeLeech;
-import com.dreamhorizon.enchantments.enchantments.Milky;
-import com.dreamhorizon.enchantments.enchantments.Poison;
+import com.dreamhorizon.enchantments.enchantments.*;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
@@ -37,11 +35,10 @@ public class EntityListener implements Listener {
         if (event.getDamager() instanceof LivingEntity && event.getEntity() instanceof LivingEntity) {
             LivingEntity damager = (LivingEntity) event.getDamager();
             LivingEntity damaged = (LivingEntity) event.getEntity();
-            EntityEquipment equipmentSlot = damager.getEquipment();
-            if (equipmentSlot == null) {
+            ItemStack attackItem = getAttackItem(damager);
+            if (attackItem == null) {
                 return;
             }
-            ItemStack attackItem = equipmentSlot.getItemInMainHand();
             if (attackItem.getType() == Material.AIR
                 || attackItem.getType() == Material.CAVE_AIR
                 || attackItem.getType() == Material.VOID_AIR) {
@@ -62,5 +59,41 @@ public class EntityListener implements Listener {
                 Milky.addMilkyEffect(attackItem, damaged);
             }
         }
+    }
+
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent event) {
+        LivingEntity entityThatDied = event.getEntity();
+
+        if (event.getEntity().getKiller() != null) {
+            LivingEntity killer = entityThatDied.getKiller();
+            if (killer != null) {
+
+                ItemStack attackItem = getAttackItem(killer);
+                if (attackItem == null) {
+                    return;
+                }
+
+                if (attackItem.getType() == Material.AIR
+                    || attackItem.getType() == Material.CAVE_AIR
+                    || attackItem.getType() == Material.VOID_AIR) {
+                    return;
+                }
+
+                if (attackItem.containsEnchantment(DHEnchantments.CANNIBALISM)) {
+                    Cannibalism.addCannibalismEffect(attackItem, entityThatDied, killer);
+                }
+            }
+        }
+    }
+
+    private ItemStack getAttackItem(LivingEntity damager) {
+        EntityEquipment equipmentSlot = damager.getEquipment();
+
+        if (equipmentSlot == null) {
+            return null;
+        }
+
+        return equipmentSlot.getItemInMainHand();
     }
 }
