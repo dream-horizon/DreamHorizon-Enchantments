@@ -20,10 +20,6 @@ package com.dreamhorizon.enchantments.config;
 
 import com.dreamhorizon.core.configuration.implementation.ConfigurationNode;
 
-/**
- * @author Lukas Mansour
- * @since 1.0
- */
 public enum EnchantmentsConfiguration implements ConfigurationNode {
     EXAMPLE_CONFIG("enchantments", "exampleValue", "# ExampleComment");
     

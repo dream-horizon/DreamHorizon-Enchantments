@@ -17,6 +17,7 @@
  */
 
 package com.dreamhorizon.enchantments;
+
 import com.dreamhorizon.enchantments.enchantments.Exhaust;
 import com.dreamhorizon.enchantments.enchantments.LifeLeech;
 import com.dreamhorizon.enchantments.enchantments.Milky;
@@ -25,17 +26,14 @@ import com.dreamhorizon.enchantments.objects.DHEnchantment;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * @author Lukas Mansour
- * @version 1.0
- */
+
 public class DHEnchantments {
     public static final List<DHEnchantment> all = new ArrayList<>();
     public static final DHEnchantment POISON = Poison.getEnchantmentInformation();
     public static final DHEnchantment LIFE_LEECH = LifeLeech.getEnchantmentInformation();
     public static final DHEnchantment EXHAUST = Exhaust.getEnchantmentInformation();
     public static final DHEnchantment MILKY = Milky.getEnchantmentInformation();
-
+    
     static {
         all.add(POISON);
         all.add(LIFE_LEECH);

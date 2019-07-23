@@ -31,10 +31,6 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * @author Lukas Mansour
- * @since 1.0
- */
 public class InventoryListener implements Listener {
     @SuppressWarnings("ConstantConditions")
     @EventHandler(ignoreCancelled = true)

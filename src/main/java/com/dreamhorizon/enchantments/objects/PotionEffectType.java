@@ -18,10 +18,6 @@
 
 package com.dreamhorizon.enchantments.objects;
 
-/**
- * @author Collin Herber
- * @version 1.0
- */
 public class PotionEffectType {
     public enum BUFFS {
         ABSORPTION,
