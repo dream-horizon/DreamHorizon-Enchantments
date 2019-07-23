@@ -30,27 +30,31 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author Collin Herber
+ * @version 1.0
+ */
 public class LifeLeech {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
-            new NamespacedKey(DHCore.getPlugin(DHCore.class), "lifeleech"),
-            "Life Leech",
-            1,
-            2,
-            EnchantmentTarget.WEAPON,
-            false,
-            false,
-            new ArrayList<>(),
-            Arrays.asList(
-                Material.WOODEN_SWORD,
-                Material.STONE_SWORD,
-                Material.IRON_SWORD,
-                Material.GOLDEN_SWORD,
-                Material.DIAMOND_SWORD
-            )
+                new NamespacedKey(DHCore.getPlugin(DHCore.class), "lifeleech"),
+                "Life Leech",
+                1,
+                2,
+                EnchantmentTarget.WEAPON,
+                false,
+                false,
+                new ArrayList<>(),
+                Arrays.asList(
+                        Material.WOODEN_SWORD,
+                        Material.STONE_SWORD,
+                        Material.IRON_SWORD,
+                        Material.GOLDEN_SWORD,
+                        Material.DIAMOND_SWORD
+                )
         );
     }
-
+    
     public static void addLifeLeechEffect(ItemStack attackItem, EntityDamageByEntityEvent event, LivingEntity damager) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.LIFE_LEECH);
         double healthGained = 0.0D;

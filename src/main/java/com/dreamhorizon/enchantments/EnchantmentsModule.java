@@ -48,7 +48,7 @@ import java.util.stream.Collectors;
  * @author Lukas Mansour
  * @since 1.0
  */
-@ModuleInfo(name = "EnchantmentsModule", author = "Articdive")
+@ModuleInfo(name = "Enchantments", author = "Articdive")
 public class EnchantmentsModule extends Module {
     private EnchantmentsHandler enchantmentsHandler;
     

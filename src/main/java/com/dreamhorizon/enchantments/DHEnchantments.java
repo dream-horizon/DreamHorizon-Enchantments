@@ -25,7 +25,10 @@ import com.dreamhorizon.enchantments.objects.DHEnchantment;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Lukas Mansour
+ * @version 1.0
+ */
 public class DHEnchantments {
     public static final List<DHEnchantment> all = new ArrayList<>();
     public static final DHEnchantment POISON = Poison.getEnchantmentInformation();
