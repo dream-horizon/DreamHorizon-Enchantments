@@ -22,6 +22,8 @@ import com.dreamhorizon.enchantments.DHEnchantments;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -53,17 +55,27 @@ public class LifeLeech {
     
     public static void addLifeLeechEffect(ItemStack attackItem, EntityDamageByEntityEvent event, LivingEntity damager) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.LIFE_LEECH);
-        double healthGained = 0.0D;
-        if (level == 1) {
-            // 10%
-            healthGained = (event.getDamage() / 100) * 10;
-        } else if (level == 2) {
-            // 20%
-            healthGained = (event.getDamage() / 100) * 20;
+
+        AttributeInstance healthAttribute = damager.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        if (healthAttribute == null) {
+            return;
         }
-        try {
+
+        double playersCurrentHealth = damager.getHealth();
+        double healthGained = 0;
+
+        if (level == 1) {
+            healthGained = (event.getDamage() / 100) * 10; // 10%
+        } else if (level == 2) {
+            healthGained = (event.getDamage() / 100) * 20; // 20%
+        }
+
+        double healthToSetTo = healthGained + playersCurrentHealth;
+
+        if (healthToSetTo > healthAttribute.getDefaultValue()) {
+            damager.setHealth(healthAttribute.getValue());
+        } else {
             damager.setHealth(damager.getHealth() + healthGained);
-        } catch (IllegalArgumentException ignored) {
         }
     }
 }

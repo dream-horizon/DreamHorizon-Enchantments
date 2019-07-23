@@ -43,15 +43,22 @@ public class Cannibalism {
             return;
         }
         double playersCurrentHealth = damager.getHealth();
+        double healthToGain = 0;
 
         if (level == 1) {
-            double healthToSetTo = ((healthAttribute.getDefaultValue() / 100) * 10 ) + playersCurrentHealth; //10% of mob's health as life
-            damager.setHealth(healthToSetTo);
-            damaged.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 40, 0)); //Add food to user
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * 10; //10% of mob's health as life
         } else if (level == 2) {
-            double healthToSetTo = ((healthAttribute.getDefaultValue() / 100) * 15 ) + playersCurrentHealth; //15% of mob's health as life
-            damager.setHealth(healthToSetTo);
-            damaged.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 40, 0)); //Add food to user
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * 15; //10% of mob's health as life
         }
+
+        double healthToSetTo = healthToGain + playersCurrentHealth;
+
+        if (healthToSetTo > healthAttribute.getDefaultValue()) {
+            damager.setHealth(healthAttribute.getValue());
+        } else {
+            damager.setHealth(damager.getHealth() + healthToGain);
+        }
+
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 40, 0)); //Add food to user
     }
 }

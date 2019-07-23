@@ -83,8 +83,6 @@ public class EntityListener implements Listener {
                 if (attackItem.containsEnchantment(DHEnchantments.CANNIBALISM)) {
                     Cannibalism.addCannibalismEffect(attackItem, entityThatDied, killer);
                 }
-
-                Cannibalism.addCannibalismEffect(attackItem, entityThatDied, killer);
             }
         }
     }
