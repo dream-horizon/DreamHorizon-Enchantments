@@ -39,11 +39,7 @@ public class EntityListener implements Listener {
             if (attackItem == null) {
                 return;
             }
-            if (attackItem.getType() == Material.AIR
-                || attackItem.getType() == Material.CAVE_AIR
-                || attackItem.getType() == Material.VOID_AIR) {
-                return;
-            }
+
             if (attackItem.containsEnchantment(DHEnchantments.POISON)) {
                 Poison.addPoisonEffect(attackItem, damaged);
             }
@@ -74,14 +70,12 @@ public class EntityListener implements Listener {
                     return;
                 }
 
-                if (attackItem.getType() == Material.AIR
-                    || attackItem.getType() == Material.CAVE_AIR
-                    || attackItem.getType() == Material.VOID_AIR) {
-                    return;
-                }
-
                 if (attackItem.containsEnchantment(DHEnchantments.CANNIBALISM)) {
                     Cannibalism.addCannibalismEffect(attackItem, entityThatDied, killer);
+                }
+
+                if (attackItem.containsEnchantment(DHEnchantments.BATTLE_RUSH)) {
+                    BattleRush.addBattleRushEffect(attackItem, killer);
                 }
             }
         }
@@ -94,6 +88,14 @@ public class EntityListener implements Listener {
             return null;
         }
 
-        return equipmentSlot.getItemInMainHand();
+        ItemStack attackItem = equipmentSlot.getItemInMainHand();
+
+        if (attackItem.getType() == Material.AIR
+            || attackItem.getType() == Material.CAVE_AIR
+            || attackItem.getType() == Material.VOID_AIR) {
+            return null;
+        }
+
+        return attackItem;
     }
 }
