@@ -27,10 +27,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-/**
- * @author Lukas Mansour
- * @since 1.0
- */
 public final class DHEnchantment extends Enchantment {
     private final String name;
     private final int maxLevel;
@@ -42,15 +38,15 @@ public final class DHEnchantment extends Enchantment {
     private final List<Material> enchantableItems;
     
     public DHEnchantment(
-            NamespacedKey key,
-            String name,
-            int minLevel,
-            int maxLevel,
-            EnchantmentTarget target,
-            boolean cursed,
-            boolean treasure,
-            List<Enchantment> conflicts,
-            List<Material> enchantableItems) {
+        NamespacedKey key,
+        String name,
+        int minLevel,
+        int maxLevel,
+        EnchantmentTarget target,
+        boolean cursed,
+        boolean treasure,
+        List<Enchantment> conflicts,
+        List<Material> enchantableItems) {
         super(key);
         this.name = name;
         this.minLevel = minLevel;

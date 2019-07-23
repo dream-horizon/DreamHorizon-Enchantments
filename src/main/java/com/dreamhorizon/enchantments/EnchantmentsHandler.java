@@ -33,10 +33,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author Lukas Mansour
- * @since 1.0
- */
 public class EnchantmentsHandler {
     private static final EnchantmentsHandler instance = new EnchantmentsHandler();
     private static final Pattern ENCHANTMENT_LORE_PATTERN = Pattern.compile("(.*) (X|IV|V?I{0,3})");
