@@ -19,7 +19,9 @@
 package com.dreamhorizon.enchantments.listener;
 
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.enchantments.Exhaust;
 import com.dreamhorizon.enchantments.enchantments.LifeLeech;
+import com.dreamhorizon.enchantments.enchantments.Milky;
 import com.dreamhorizon.enchantments.enchantments.Poison;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -50,12 +52,18 @@ public class EntityListener implements Listener {
                 return;
             }
             if (attackItem.containsEnchantment(DHEnchantments.POISON)) {
-                //Here we link out to the Poison class so everything about the enchantment is in a single area
                 Poison.addPoisonEffect(attackItem, damaged);
             }
             if (attackItem.containsEnchantment(DHEnchantments.LIFE_LEECH)) {
-                //Here we link out to the LifeLeech class so everything about the enchantment is in a single area
                 LifeLeech.addLifeLeechEffect(attackItem, event, damaged);
+            }
+
+            if (attackItem.containsEnchantment(DHEnchantments.EXHAUST)) {
+                Exhaust.addExhaustEffect(attackItem, damaged);
+            }
+
+            if (attackItem.containsEnchantment(DHEnchantments.MILKY)) {
+                Milky.addMilkyEffect(attackItem, damaged);
             }
         }
     }
