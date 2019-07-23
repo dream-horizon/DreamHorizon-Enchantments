@@ -1,5 +1,5 @@
 /*
- * DHEnchants
+ * DHEnchantments
  * Copyright (C) 2019 Dream Horizon
  *
  * This program is free software: you can redistribute it and/or modify

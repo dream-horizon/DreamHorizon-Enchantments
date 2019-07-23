@@ -21,7 +21,7 @@ import com.dreamhorizon.core.DHCore;
 import com.dreamhorizon.enchantments.DHEnchantments;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import com.dreamhorizon.enchantments.objects.PotionEffectType;
-import com.dreamhorizon.enchantments.utils.NumberUtil;
+import com.dreamhorizon.enchantments.util.NumberUtil;
 import com.google.common.base.Enums;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

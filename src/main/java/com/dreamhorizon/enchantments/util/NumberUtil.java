@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.dreamhorizon.enchantments.utils;
+package com.dreamhorizon.enchantments.util;
 
 public class NumberUtil {
     public static double getRandomNumber(int min, int max) {

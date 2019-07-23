@@ -20,7 +20,7 @@ package com.dreamhorizon.enchantments.enchantments;
 import com.dreamhorizon.core.DHCore;
 import com.dreamhorizon.enchantments.DHEnchantments;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
-import com.dreamhorizon.enchantments.utils.NumberUtil;
+import com.dreamhorizon.enchantments.util.NumberUtil;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.EnchantmentTarget;

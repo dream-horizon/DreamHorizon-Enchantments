@@ -1,5 +1,5 @@
 /*
- * DHExamplemodule
+ * DHEnchantments
  * Copyright (C) 2019 Dream Horizon
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,6 @@ public class PotionEffectType {
         JUMP,
         REGENERATION,
         NIGHT_VISION,
-        SLOW_FALLING,
         SPEED,
         WATER_BREATHING
     }
@@ -40,6 +39,7 @@ public class PotionEffectType {
         POISON,
         SLOW,
         WEAKNESS,
+        SLOW_FALLING,
         WITHER
     }
 }
