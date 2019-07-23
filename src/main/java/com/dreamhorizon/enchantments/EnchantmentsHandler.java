@@ -89,7 +89,11 @@ public class EnchantmentsHandler {
             for (String oldLore : itemMeta.getLore()) {
                 Matcher m = ENCHANTMENT_LORE_PATTERN.matcher(oldLore);
                 if (m.matches()) {
-                    continue;
+                    // Failsafe incase the enchant keys get nuked.
+                    Enchantment enchantment = Enchantment.getByName(m.group(1));
+                    if (enchantment != null && !itemMeta.hasEnchant(enchantment)) {
+                        itemMeta.addEnchant(enchantment, fromRoman(m.group(2)), true);
+                    }
                 } else {
                     newLoreGeneral.add(oldLore);
                 }
@@ -98,6 +102,44 @@ public class EnchantmentsHandler {
         newLoreEnchants.addAll(newLoreGeneral);
         itemMeta.setLore(newLoreEnchants);
         itemStack.setItemMeta(itemMeta);
+    }
+    
+    private int fromRoman(String group) {
+        switch (group.toLowerCase()) {
+            case "I": {
+                return 1;
+            }
+            case "II": {
+                return 2;
+            }
+            case "III": {
+                return 3;
+            }
+            case "IV": {
+                return 4;
+            }
+            case "V": {
+                return 5;
+            }
+            case "VI": {
+                return 6;
+            }
+            case "VII": {
+                return 7;
+            }
+            case "VIII": {
+                return 8;
+            }
+            case "IX": {
+                return 9;
+            }
+            case "X": {
+                return 10;
+            }
+            default: {
+                return Integer.valueOf(group);
+            }
+        }
     }
     
     private String getRoman(int level) {
