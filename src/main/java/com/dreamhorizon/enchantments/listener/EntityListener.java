@@ -62,7 +62,7 @@ public class EntityListener implements Listener {
     }
 
     @EventHandler
-    public void onEDeath(EntityDeathEvent event) {
+    public void onEntityDeath(EntityDeathEvent event) {
         LivingEntity entityThatDied = event.getEntity();
 
         if (event.getEntity().getKiller() != null) {
