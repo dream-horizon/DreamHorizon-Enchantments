@@ -30,6 +30,7 @@ public class DHEnchantments {
     public static final DHEnchantment EXHAUST = Exhaust.getEnchantmentInformation();
     public static final DHEnchantment MILKY = Milky.getEnchantmentInformation();
     public static final DHEnchantment CANNIBALISM = Cannibalism.getEnchantmentInformation();
+    public static final DHEnchantment BATTLE_RUSH = BattleRush.getEnchantmentInformation();
 
     static {
         all.add(POISON);
@@ -37,5 +38,6 @@ public class DHEnchantments {
         all.add(MILKY);
         all.add(EXHAUST);
         all.add(CANNIBALISM);
+        all.add(BATTLE_RUSH);
     }
 }
