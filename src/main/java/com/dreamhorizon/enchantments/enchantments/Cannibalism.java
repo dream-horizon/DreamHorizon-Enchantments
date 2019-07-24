@@ -48,7 +48,7 @@ public class Cannibalism {
         if (level == 1) {
             healthToGain = (healthAttribute.getDefaultValue() / 100) * 10; //10% of mob's health as life
         } else if (level == 2) {
-            healthToGain = (healthAttribute.getDefaultValue() / 100) * 15; //10% of mob's health as life
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * 15; //15% of mob's health as life
         }
 
         double healthToSetTo = healthToGain + playersCurrentHealth;
