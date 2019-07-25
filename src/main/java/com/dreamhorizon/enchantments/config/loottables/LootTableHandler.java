@@ -56,11 +56,11 @@ public class LootTableHandler {
             LOGGER.log(Level.ERROR, "enchantment_loot_mythicmobs.yml couldn't be created.");
             throw new RuntimeException("enchantment_loot_mythicmobs.yml couldn't be created.");
         }
-        config.load();
-        // config is empty so. yeah.
-        if (config.isEmpty()) {
+        // file is empty, so return.
+        if (configFile.length() == 0) {
             return;
         }
+        config.load();
         for (MythicMob mob : MythicMobs.inst().getMobManager().getMobTypes()) {
             String mobName = mob.getInternalName();
             if (config.get(mobName) != null) {
