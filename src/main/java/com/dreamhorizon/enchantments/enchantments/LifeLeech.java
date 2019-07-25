@@ -77,9 +77,9 @@ public class LifeLeech {
         double healthToSetTo = healthGained + playersCurrentHealth;
         
         if (healthToSetTo > healthAttribute.getDefaultValue()) {
-            damager.setHealth(healthAttribute.getValue());
+            damager.setHealth(healthAttribute.getDefaultValue());
         } else {
-            damager.setHealth(damager.getHealth() + healthGained);
+            damager.setHealth(healthToSetTo);
         }
     }
 }
