@@ -47,20 +47,25 @@ import java.util.Map;
 public class LootTableHandler {
     private static final Logger LOGGER = LogManager.getLogger("com.dreamhorizon.core");
     private final static LootTableHandler instance = new LootTableHandler();
-    private final Map<MythicMob, LootTable> lootTables = new HashMap<>();
+    private Map<MythicMob, LootTable> lootTables = new HashMap<>();
     
     private LootTableHandler() {
+        loadLootTables();
+    }
+    
+    public void loadLootTables() {
+        lootTables = new HashMap<>();
         File configFile = new File(ConfigurationHandler.getInstance().getConfigFolder() + File.separator + "enchantment_loot_mythicmobs.yml");
         FileConfig config = FileConfig.of(configFile);
         if (!FileUtil.createFile(configFile)) {
             LOGGER.log(Level.ERROR, "enchantment_loot_mythicmobs.yml couldn't be created.");
             throw new RuntimeException("enchantment_loot_mythicmobs.yml couldn't be created.");
         }
-        config.load();
-        // config is empty so. yeah.
-        if (config.isEmpty()) {
+        // file is empty, so return.
+        if (configFile.length() == 0) {
             return;
         }
+        config.load();
         for (MythicMob mob : MythicMobs.inst().getMobManager().getMobTypes()) {
             String mobName = mob.getInternalName();
             if (config.get(mobName) != null) {
