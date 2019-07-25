@@ -47,9 +47,14 @@ import java.util.Map;
 public class LootTableHandler {
     private static final Logger LOGGER = LogManager.getLogger("com.dreamhorizon.core");
     private final static LootTableHandler instance = new LootTableHandler();
-    private final Map<MythicMob, LootTable> lootTables = new HashMap<>();
+    private Map<MythicMob, LootTable> lootTables = new HashMap<>();
     
     private LootTableHandler() {
+        loadLootTables();
+    }
+    
+    public void loadLootTables() {
+        lootTables = new HashMap<>();
         File configFile = new File(ConfigurationHandler.getInstance().getConfigFolder() + File.separator + "enchantment_loot_mythicmobs.yml");
         FileConfig config = FileConfig.of(configFile);
         if (!FileUtil.createFile(configFile)) {

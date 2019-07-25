@@ -26,9 +26,11 @@ import com.dreamhorizon.core.acf.annotation.Default;
 import com.dreamhorizon.core.acf.annotation.Subcommand;
 import com.dreamhorizon.core.commands.implementation.DHCommand;
 import com.dreamhorizon.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.config.loottables.LootTableHandler;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -121,5 +123,12 @@ public class EnchantCommand extends DHCommand {
         }
         // TODO: Customize message
         player.sendMessage("Enchanted hopefully.");
+    }
+    
+    @Subcommand("reload")
+    @CommandPermission("dhenchantments.reload")
+    public static void reload(CommandSender sender) {
+        // loadLootTables will also reload them.
+        LootTableHandler.getInstance().loadLootTables();
     }
 }
