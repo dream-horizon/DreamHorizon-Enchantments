@@ -18,7 +18,10 @@
 package com.dreamhorizon.enchantments.enchantments;
 
 import com.dreamhorizon.core.DHCore;
+import com.dreamhorizon.core.configuration.implementation.EnumConfiguration;
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import com.dreamhorizon.enchantments.objects.PotionEffectType;
 import com.dreamhorizon.enchantments.util.NumberUtil;
@@ -65,22 +68,22 @@ public class Milky {
     public static void addMilkyEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.MILKY);
         double chance = NumberUtil.getRandomNumber(0, 100);
+        EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
+        boolean cleanse = false;
         if (level == 1) {
-            if (chance <= 25) { //25%
-                Collection<PotionEffect> effects = damaged.getActivePotionEffects();
-                for (PotionEffect effect : effects) {
-                    if (Enums.getIfPresent(PotionEffectType.BUFFS.class, effect.getType().getName()).isPresent()) {
-                        damaged.removePotionEffect(effect.getType());
-                    }
-                }
+            if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.MILKY_1_CLEANSE_CHANCE))) {
+                cleanse = true;
             }
         } else if (level == 2) {
-            if (chance <= 35) { //35%
-                Collection<PotionEffect> effects = damaged.getActivePotionEffects();
-                for (PotionEffect effect : effects) {
-                    if (Enums.getIfPresent(PotionEffectType.BUFFS.class, effect.getType().getName()).isPresent()) {
-                        damaged.removePotionEffect(effect.getType());
-                    }
+            if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.MILKY_2_CLEANSE_CHANCE))) {
+                cleanse = true;
+            }
+        }
+        if (cleanse) {
+            Collection<PotionEffect> effects = damaged.getActivePotionEffects();
+            for (PotionEffect effect : effects) {
+                if (Enums.getIfPresent(PotionEffectType.BUFFS.class, effect.getType().getName()).isPresent()) {
+                    damaged.removePotionEffect(effect.getType());
                 }
             }
         }

@@ -18,7 +18,10 @@
 package com.dreamhorizon.enchantments.enchantments;
 
 import com.dreamhorizon.core.DHCore;
+import com.dreamhorizon.core.configuration.implementation.EnumConfiguration;
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import com.dreamhorizon.enchantments.util.NumberUtil;
 import org.bukkit.Material;
@@ -63,17 +66,18 @@ public class Exhaust {
     public static void addExhaustEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.EXHAUST);
         double chance = NumberUtil.getRandomNumber(0, 100);
+        EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         if (level == 1) {
-            if (chance <= 2) { //2% Chance
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 40, 0));
+            if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_1_SLOW_CHANCE))) {
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_1_SLOW_DURATION)), 0));
             }
         } else if (level == 2) {
-            if (chance <= 4) { //4% Chance
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 40, 0));
+            if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_2_SLOW_CHANCE))) {
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_2_SLOW_DURATION)), 0));
             }
         } else if (level == 3) {
-            if (chance <= 6) { //6% Chance
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 40, 0));
+            if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_3_SLOW_CHANCE))) {
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_3_SLOW_DURATION)), 0));
             }
         }
     }

@@ -1,7 +1,10 @@
 package com.dreamhorizon.enchantments.enchantments;
 
 import com.dreamhorizon.core.DHCore;
+import com.dreamhorizon.core.configuration.implementation.EnumConfiguration;
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -33,14 +36,15 @@ public class BattleRush {
             )
         );
     }
-
+    
     public static void addBattleRushEffect(ItemStack attackItem, LivingEntity damager) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.BATTLE_RUSH);
         int duration = 30;
+        EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         if (level == 1) {
-            duration = 60; //3 Seconds of Speed
+            duration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.BATTLE_RUSH_1_SPEED_DURATION));
         } else if (level == 2) {
-            duration = 100; //5 Seconds of Speed
+            duration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.BATTLE_RUSH_1_SPEED_DURATION));
         }
         damager.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, duration, 0));
     }

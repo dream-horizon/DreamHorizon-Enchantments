@@ -98,6 +98,9 @@ public final class DHEnchantment extends Enchantment {
     
     @Override
     public boolean canEnchantItem(@NotNull ItemStack item) {
+        if (item.getType() == Material.ENCHANTED_BOOK) {
+            return true;
+        }
         return enchantableItems.contains(item.getType());
     }
 }
