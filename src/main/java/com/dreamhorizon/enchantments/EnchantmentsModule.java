@@ -30,14 +30,16 @@ import com.dreamhorizon.core.modulation.implementation.Module;
 import com.dreamhorizon.core.modulation.implementation.ModuleInfo;
 import com.dreamhorizon.enchantments.command.EnchantCommand;
 import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
-import com.dreamhorizon.enchantments.listener.EntityListener;
-import com.dreamhorizon.enchantments.listener.InventoryListener;
+import com.dreamhorizon.enchantments.listeners.AnvilListener;
+import com.dreamhorizon.enchantments.listeners.EntityListener;
+import com.dreamhorizon.enchantments.listeners.InventoryListener;
+import com.dreamhorizon.enchantments.listeners.MythicMobsListener;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -47,10 +49,16 @@ import java.util.stream.Collectors;
 @ModuleInfo(name = "Enchantments", author = "Articdive")
 public class EnchantmentsModule extends Module {
     private EnchantmentsHandler enchantmentsHandler;
+    private final List<Listener> listeners = new ArrayList<>();
     
     @Override
     public List<Listener> getListeners() {
-        return Arrays.asList(new EntityListener(), new InventoryListener());
+        if (listeners.isEmpty()) {
+            listeners.add(new EntityListener());
+            listeners.add(new InventoryListener());
+            listeners.add(new AnvilListener());
+        }
+        return listeners;
     }
     
     @Override
@@ -69,6 +77,16 @@ public class EnchantmentsModule extends Module {
     
     @Override
     public void onDisable() {
+    }
+    
+    @Override
+    public void hookDependencies() {
+        if (Bukkit.getPluginManager().isPluginEnabled("MythicMobs")) {
+            // This has to be enabled post-load so we register it, if we enable and disable manually we get an IllegalStateException
+            MythicMobsListener mythicMobsListener = new MythicMobsListener();
+            Bukkit.getPluginManager().registerEvents(mythicMobsListener, DHCore.getPlugin(DHCore.class));
+            listeners.add(mythicMobsListener);
+        }
     }
     
     @Override
@@ -99,14 +117,13 @@ public class EnchantmentsModule extends Module {
     @Override
     public Map<Class, ContextResolver<?, BukkitCommandExecutionContext>> getCommandContexts() {
         HashMap<Class, ContextResolver<?, BukkitCommandExecutionContext>> map = new HashMap<>();
-        DHCore dhCore = DHCore.getPlugin(DHCore.class);
         map.put(DHEnchantment.class, context -> {
             String enchantName = context.popFirstArg();
             if (enchantName.trim().isEmpty()) {
                 return null;
             }
-            if (DHEnchantment.getByKey(new NamespacedKey(dhCore, enchantName)) instanceof DHEnchantment) {
-                return DHEnchantment.getByKey(new NamespacedKey(dhCore, enchantName));
+            if (DHEnchantment.getByKey(new NamespacedKey(DHCore.getPlugin(DHCore.class), enchantName)) instanceof DHEnchantment) {
+                return DHEnchantment.getByKey(new NamespacedKey(DHCore.getPlugin(DHCore.class), enchantName));
             } else {
                 throw new InvalidCommandArgument("Could not find a custom enchant with that name!");
             }

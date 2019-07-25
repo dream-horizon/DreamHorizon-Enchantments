@@ -1,7 +1,10 @@
 package com.dreamhorizon.enchantments.enchantments;
 
 import com.dreamhorizon.core.DHCore;
+import com.dreamhorizon.core.configuration.implementation.EnumConfiguration;
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -35,30 +38,33 @@ public class Cannibalism {
             )
         );
     }
-
+    
     public static void addCannibalismEffect(ItemStack attackItem, LivingEntity damaged, LivingEntity damager) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.EXHAUST);
         AttributeInstance healthAttribute = damaged.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (healthAttribute == null) {
             return;
         }
+        EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         double playersCurrentHealth = damager.getHealth();
         double healthToGain = 0;
-
+        int saturationDuration = 0;
         if (level == 1) {
-            healthToGain = (healthAttribute.getDefaultValue() / 100) * 10; //10% of mob's health as life
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_1_HEALTH)); //10% of mob's health as life
+            saturationDuration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_1_SATURATION_DURATION));
         } else if (level == 2) {
-            healthToGain = (healthAttribute.getDefaultValue() / 100) * 15; //15% of mob's health as life
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_2_HEALTH)); //10% of mob's health as life
+            saturationDuration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_2_SATURATION_DURATION));
         }
-
+        
         double healthToSetTo = healthToGain + playersCurrentHealth;
-
+        
         if (healthToSetTo > healthAttribute.getDefaultValue()) {
             damager.setHealth(healthAttribute.getValue());
         } else {
             damager.setHealth(damager.getHealth() + healthToGain);
         }
-
-        damaged.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 40, 0)); //Add food to user
+        
+        damager.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationDuration, 0)); //Add food to user
     }
 }

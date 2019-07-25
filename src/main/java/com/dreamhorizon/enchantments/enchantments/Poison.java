@@ -19,7 +19,10 @@
 package com.dreamhorizon.enchantments.enchantments;
 
 import com.dreamhorizon.core.DHCore;
+import com.dreamhorizon.core.configuration.implementation.EnumConfiguration;
 import com.dreamhorizon.enchantments.DHEnchantments;
+import com.dreamhorizon.enchantments.EnchantmentsHandler;
+import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -55,13 +58,14 @@ public class Poison {
     
     public static void addPoisonEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.POISON);
+        EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         // 20 Ticks = 1 Second
         if (level == 1) {
-            damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 100, 0));
+            damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.POISON_1_POISON_DURATION)), 0));
         } else if (level == 2) {
-            damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 160, 0));
+            damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.POISON_2_POISON_DURATION)), 0));
         } else if (level == 3) {
-            damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 240, 0));
+            damaged.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.POISON_3_POISON_DURATION)), 0));
         }
     }
 }
