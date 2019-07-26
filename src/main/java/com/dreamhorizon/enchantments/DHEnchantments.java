@@ -24,6 +24,7 @@ import com.dreamhorizon.enchantments.enchantments.Exhaust;
 import com.dreamhorizon.enchantments.enchantments.LifeLeech;
 import com.dreamhorizon.enchantments.enchantments.Milky;
 import com.dreamhorizon.enchantments.enchantments.Poison;
+import com.dreamhorizon.enchantments.enchantments.SkillSwipe;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class DHEnchantments {
     public static final DHEnchantment MILKY = Milky.getEnchantmentInformation();
     public static final DHEnchantment CANNIBALISM = Cannibalism.getEnchantmentInformation();
     public static final DHEnchantment BATTLE_RUSH = BattleRush.getEnchantmentInformation();
+    public static final DHEnchantment SKILL_SWIPE = SkillSwipe.getEnchantmentInformation();
     
     static {
         all.add(POISON);
