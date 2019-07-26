@@ -39,7 +39,13 @@ public enum EnchantmentsConfiguration implements ConfigurationNode {
     MILKY_1_CLEANSE_CHANCE("milky_1_cleanse_chance", "25", "# Percentage chance to remove (cleanse) all debuffs."),
     MILKY_2_CLEANSE_CHANCE("milky_2_cleanse_chance", "35", "# Percentage chance to remove (cleanse) all debuffs."),
     BATTLE_RUSH_1_SPEED_DURATION("battle_rush_1_speed_duration", "3", "# Duration of the speed effect on enemy death (In seconds)."),
-    BATTLE_RUSH_2_SPEED_DURATION("battle_rush_2_speed_duration", "5", "# Duration of the speed effect on enemy death (In seconds).");
+    BATTLE_RUSH_2_SPEED_DURATION("battle_rush_2_speed_duration", "5", "# Duration of the speed effect on enemy death (In seconds)."),
+    SKILL_SWIPE_1_STEAL_CHANCE("skill_swipe_1_steal_chance", "10", "# Chance to steal experience for level 1 enchantment."),
+    SKILL_SWIPE_2_STEAL_CHANCE("skill_swipe_2_steal_chance", "15", "# Chance to steal experience for level 2 enchantment."),
+    SKILL_SWIPE_3_STEAL_CHANCE("skill_swipe_3_steal_chance", "20", "# Chance to steal experience for level 3 enchantment."),
+    SKILL_SWIPE_1_EXPERIENCE_STEAL("skill_swipe_1_experience_steal", "15", "# Amount of experience to steal for level 1 enchantment."),
+    SKILL_SWIPE_2_EXPERIENCE_STEAL("skill_swipe_2_experience_steal", "30", "# Amount of experience to steal for level 2 enchantment"),
+    SKILL_SWIPE_3_EXPERIENCE_STEAL("skill_swipe_3_experience_steal", "60", "# Amount of experience to steal for level 3 enchantment");
     
     private final String path;
     private final Object defaultValue;
