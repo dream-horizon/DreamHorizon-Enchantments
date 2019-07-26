@@ -42,7 +42,7 @@ public class SkillSwipe {
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "skill_swipe"),
             "Skill Swipe",
             1,
-            2,
+            3,
             EnchantmentTarget.WEAPON,
             false,
             false,

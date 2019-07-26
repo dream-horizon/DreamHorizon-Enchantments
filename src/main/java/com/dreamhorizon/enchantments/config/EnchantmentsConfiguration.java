@@ -46,8 +46,10 @@ public enum EnchantmentsConfiguration implements ConfigurationNode {
     SKILL_SWIPE_1_EXPERIENCE_STEAL("skill_swipe_1_experience_steal", "15", "# Amount of experience to steal for level 1 enchantment."),
     SKILL_SWIPE_2_EXPERIENCE_STEAL("skill_swipe_2_experience_steal", "30", "# Amount of experience to steal for level 2 enchantment"),
     SKILL_SWIPE_3_EXPERIENCE_STEAL("skill_swipe_3_experience_steal", "60", "# Amount of experience to steal for level 3 enchantment"),
-    HASTE_1_APLIFIER("haste_1_amplifier", "1", "# Level of haste to be applied "),
-    HASTE_2_APLIFIER("haste_2_amplifier", "2", "# Level of haste to be applied ");
+    HASTE_1_APLIFIER("haste_1_amplifier", "1", "# Level of haste to be applied at level 1"),
+    HASTE_2_APLIFIER("haste_2_amplifier", "2", "# Level of haste to be applied at level 2"),
+    SPEED_1_APLIFIER("speed_1_amplifier", "1", "# Level of speed to be applied at level 1"),
+    SPEED_2_APLIFIER("speed_2_amplifier", "2", "# Level of speed to be applied at level 2");
 
     private final String path;
     private final Object defaultValue;
