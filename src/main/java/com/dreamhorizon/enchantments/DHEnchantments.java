@@ -18,13 +18,7 @@
 
 package com.dreamhorizon.enchantments;
 
-import com.dreamhorizon.enchantments.enchantments.BattleRush;
-import com.dreamhorizon.enchantments.enchantments.Cannibalism;
-import com.dreamhorizon.enchantments.enchantments.Exhaust;
-import com.dreamhorizon.enchantments.enchantments.LifeLeech;
-import com.dreamhorizon.enchantments.enchantments.Milky;
-import com.dreamhorizon.enchantments.enchantments.Poison;
-import com.dreamhorizon.enchantments.enchantments.SkillSwipe;
+import com.dreamhorizon.enchantments.enchantments.*;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 
 import java.util.ArrayList;
@@ -39,6 +33,7 @@ public class DHEnchantments {
     public static final DHEnchantment CANNIBALISM = Cannibalism.getEnchantmentInformation();
     public static final DHEnchantment BATTLE_RUSH = BattleRush.getEnchantmentInformation();
     public static final DHEnchantment SKILL_SWIPE = SkillSwipe.getEnchantmentInformation();
+    public static final DHEnchantment HASTE = Haste.getEnchantmentInformation();
     
     static {
         all.add(POISON);
@@ -47,5 +42,6 @@ public class DHEnchantments {
         all.add(EXHAUST);
         all.add(CANNIBALISM);
         all.add(BATTLE_RUSH);
+        all.add(HASTE);
     }
 }
