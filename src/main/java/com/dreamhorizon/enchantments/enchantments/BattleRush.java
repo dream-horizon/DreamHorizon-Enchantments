@@ -20,8 +20,8 @@ import java.util.Arrays;
 public class BattleRush {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
-            new NamespacedKey(DHCore.getPlugin(DHCore.class), "cannibalism"),
-            "Cannibalism",
+            new NamespacedKey(DHCore.getPlugin(DHCore.class), "battle_rush"),
+            "Battle Rush",
             1,
             2,
             EnchantmentTarget.ARMOR_FEET,
@@ -39,13 +39,13 @@ public class BattleRush {
     
     public static void addBattleRushEffect(ItemStack attackItem, LivingEntity damager) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.BATTLE_RUSH);
-        int duration = 30;
+        int duration = 20;
         EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         if (level == 1) {
             duration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.BATTLE_RUSH_1_SPEED_DURATION));
         } else if (level == 2) {
-            duration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.BATTLE_RUSH_1_SPEED_DURATION));
+            duration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.BATTLE_RUSH_2_SPEED_DURATION));
         }
-        damager.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, duration, 0));
+        damager.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, duration, 1));
     }
 }

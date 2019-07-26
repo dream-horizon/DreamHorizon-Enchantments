@@ -38,7 +38,7 @@ import java.util.Arrays;
 public class LifeLeech {
     public static DHEnchantment getEnchantmentInformation() {
         return new DHEnchantment(
-            new NamespacedKey(DHCore.getPlugin(DHCore.class), "lifeleech"),
+            new NamespacedKey(DHCore.getPlugin(DHCore.class), "life_leech"),
             "Life Leech",
             1,
             2,
@@ -79,7 +79,7 @@ public class LifeLeech {
         if (healthToSetTo > healthAttribute.getDefaultValue()) {
             damager.setHealth(healthAttribute.getValue());
         } else {
-            damager.setHealth(damager.getHealth() + healthGained);
+            damager.setHealth(healthToSetTo);
         }
     }
 }

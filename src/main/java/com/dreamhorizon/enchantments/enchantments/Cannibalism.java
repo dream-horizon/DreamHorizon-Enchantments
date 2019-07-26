@@ -40,7 +40,7 @@ public class Cannibalism {
     }
     
     public static void addCannibalismEffect(ItemStack attackItem, LivingEntity damaged, LivingEntity damager) {
-        int level = attackItem.getEnchantmentLevel(DHEnchantments.EXHAUST);
+        int level = attackItem.getEnchantmentLevel(DHEnchantments.CANNIBALISM);
         AttributeInstance healthAttribute = damaged.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (healthAttribute == null) {
             return;
@@ -50,10 +50,10 @@ public class Cannibalism {
         double healthToGain = 0;
         int saturationDuration = 0;
         if (level == 1) {
-            healthToGain = (healthAttribute.getDefaultValue() / 100) * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_1_HEALTH)); //10% of mob's health as life
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_1_HEALTH));
             saturationDuration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_1_SATURATION_DURATION));
         } else if (level == 2) {
-            healthToGain = (healthAttribute.getDefaultValue() / 100) * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_2_HEALTH)); //10% of mob's health as life
+            healthToGain = (healthAttribute.getDefaultValue() / 100) * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_2_HEALTH));
             saturationDuration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.CANNIBALISM_2_SATURATION_DURATION));
         }
         
@@ -64,7 +64,6 @@ public class Cannibalism {
         } else {
             damager.setHealth(damager.getHealth() + healthToGain);
         }
-        
-        damager.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationDuration, 0)); //Add food to user
+        damager.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationDuration, 1));
     }
 }

@@ -67,7 +67,7 @@ public class EntityListener implements Listener {
                 Poison.addPoisonEffect(attackItem, damaged);
             }
             if (attackItem.containsEnchantment(DHEnchantments.LIFE_LEECH)) {
-                LifeLeech.addLifeLeechEffect(attackItem, event, damaged);
+                LifeLeech.addLifeLeechEffect(attackItem, event, damager);
             }
             
             if (attackItem.containsEnchantment(DHEnchantments.EXHAUST)) {
