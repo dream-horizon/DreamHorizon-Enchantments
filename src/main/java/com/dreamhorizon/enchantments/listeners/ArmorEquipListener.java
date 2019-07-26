@@ -25,7 +25,7 @@ public class ArmorEquipListener implements Listener {
 
         //Un-equipping
         if(unequippedArmor != null && unequippedArmor.getType() != Material.AIR) {
-            if(equippedArmor.containsEnchantment(DHEnchantments.HASTE)) {
+            if(unequippedArmor.containsEnchantment(DHEnchantments.HASTE)) {
                 Haste.removeHasteEffect(player);
             }
         }
