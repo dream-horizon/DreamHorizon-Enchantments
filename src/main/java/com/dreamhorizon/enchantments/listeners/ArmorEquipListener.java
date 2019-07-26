@@ -2,6 +2,7 @@ package com.dreamhorizon.enchantments.listeners;
 import com.codingforcookies.armorequip.ArmorEquipEvent;
 import com.dreamhorizon.enchantments.DHEnchantments;
 import com.dreamhorizon.enchantments.enchantments.Haste;
+import com.dreamhorizon.enchantments.enchantments.Speed;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -21,12 +22,20 @@ public class ArmorEquipListener implements Listener {
             if(equippedArmor.containsEnchantment(DHEnchantments.HASTE)) {
                 Haste.applyHasteEffect(equippedArmor, player);
             }
+
+            if(equippedArmor.containsEnchantment(DHEnchantments.SPEED)) {
+                Speed.applySpeedEffect(equippedArmor, player);
+            }
         }
 
         //Un-equipping
         if(unequippedArmor != null && unequippedArmor.getType() != Material.AIR) {
             if(unequippedArmor.containsEnchantment(DHEnchantments.HASTE)) {
                 Haste.removeHasteEffect(player);
+            }
+
+            if(unequippedArmor.containsEnchantment(DHEnchantments.SPEED)) {
+                Speed.removeSpeedEffect(player);
             }
         }
     }

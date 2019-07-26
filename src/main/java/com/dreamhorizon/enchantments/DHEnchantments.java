@@ -34,6 +34,7 @@ public class DHEnchantments {
     public static final DHEnchantment BATTLE_RUSH = BattleRush.getEnchantmentInformation();
     public static final DHEnchantment SKILL_SWIPE = SkillSwipe.getEnchantmentInformation();
     public static final DHEnchantment HASTE = Haste.getEnchantmentInformation();
+    public static final DHEnchantment SPEED = Speed.getEnchantmentInformation();
     
     static {
         all.add(POISON);
@@ -43,5 +44,6 @@ public class DHEnchantments {
         all.add(CANNIBALISM);
         all.add(BATTLE_RUSH);
         all.add(HASTE);
+        all.add(SPEED);
     }
 }

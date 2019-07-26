@@ -41,7 +41,7 @@ public class Exhaust {
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "exhaust"),
             "Exhaust",
             1,
-            2,
+            3,
             EnchantmentTarget.WEAPON,
             false,
             false,
