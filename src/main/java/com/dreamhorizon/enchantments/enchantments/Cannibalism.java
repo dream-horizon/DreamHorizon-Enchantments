@@ -64,8 +64,6 @@ public class Cannibalism {
         } else {
             damager.setHealth(damager.getHealth() + healthToGain);
         }
-
-        //TODO: Fix - Doesn't seem to work
-        damager.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationDuration, 0)); //Add food to user
+        damager.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationDuration, 1));
     }
 }
