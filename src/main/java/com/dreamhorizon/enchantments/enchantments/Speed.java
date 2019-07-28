@@ -23,7 +23,7 @@ public class Speed {
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "speed"),
             "Speed",
             1,
-            2,
+            1,
             EnchantmentTarget.ARMOR_FEET,
             false,
             false,

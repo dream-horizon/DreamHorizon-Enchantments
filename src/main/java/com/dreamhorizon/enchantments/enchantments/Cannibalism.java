@@ -78,7 +78,7 @@ public class Cannibalism {
         
         double healthToSetTo = healthToGain + playersCurrentHealth;
         
-        if (healthToSetTo > healthAttribute.getDefaultValue()) {
+        if (healthToSetTo > healthAttribute.getValue()) {
             damager.setHealth(healthAttribute.getValue());
         } else {
             damager.setHealth(damager.getHealth() + healthToGain);
