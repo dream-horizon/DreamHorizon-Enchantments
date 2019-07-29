@@ -69,23 +69,44 @@ public class EntityListener implements Listener {
         if (event.getEntity().getKiller() != null) {
             LivingEntity killer = entityThatDied.getKiller();
             if (killer != null) {
-                
-                ItemStack attackItem = getAttackItem(killer);
-                if (attackItem == null) {
-                    return;
-                }
-                
-                if (attackItem.containsEnchantment(DHEnchantments.CANNIBALISM)) {
-                    Cannibalism.addCannibalismEffect(attackItem, entityThatDied, killer);
-                }
-                
-                if (attackItem.containsEnchantment(DHEnchantments.BATTLE_RUSH)) {
-                    BattleRush.addBattleRushEffect(attackItem, killer);
+                EntityEquipment equipmentSlot = killer.getEquipment();
+                if (equipmentSlot != null) {
+                    ItemStack boots = equipmentSlot.getBoots();
+                    ItemStack helmet = equipmentSlot.getHelmet();
+                    ItemStack chestArmor = equipmentSlot.getChestplate();
+                    ItemStack legs = equipmentSlot.getLeggings();
+
+                    ItemStack attackItem = getAttackItem(killer);
+                    if (attackItem != null) { //Do stuff for enchantments that are used in main hand
+
+                    }
+
+                    if (boots != null) { //Do stuff for enchantments that are on boots
+                        if (boots.containsEnchantment(DHEnchantments.BATTLE_RUSH)) {
+                            BattleRush.addBattleRushEffect(boots, killer);
+                        }
+                    }
+
+                    if (helmet != null) {//Do stuff for enchantments that are on helmet
+                        if (helmet.containsEnchantment(DHEnchantments.CANNIBALISM)) {
+                            Cannibalism.addCannibalismEffect(helmet, entityThatDied, killer);
+                        }
+                    }
+
+                    if (chestArmor != null) {//Do stuff for enchantments that are on chestplates
+
+                    }
+
+                    if (legs != null) {//Do stuff for enchantments that are on leggings
+
+                    }
+
+
                 }
             }
         }
     }
-    
+
     private ItemStack getAttackItem(LivingEntity damager) {
         EntityEquipment equipmentSlot = damager.getEquipment();
         

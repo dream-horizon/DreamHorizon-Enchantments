@@ -53,13 +53,6 @@ public class Haste {
                     99999,
                     Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.HASTE_1_APLIFIER)))
             );
-        } else if(level == 2) {
-            equipper.addPotionEffect(
-                new PotionEffect(
-                    PotionEffectType.SPEED,
-                    99999,
-                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.HASTE_2_APLIFIER)))
-            );
         }
     }
 
