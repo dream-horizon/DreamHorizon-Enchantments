@@ -31,10 +31,10 @@ import com.dreamhorizon.core.modulation.implementation.ModuleInfo;
 import com.dreamhorizon.enchantments.command.EnchantCommand;
 import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.listeners.AnvilListener;
+import com.dreamhorizon.enchantments.listeners.ArmorEquipListener;
 import com.dreamhorizon.enchantments.listeners.EntityListener;
 import com.dreamhorizon.enchantments.listeners.InventoryListener;
 import com.dreamhorizon.enchantments.listeners.MythicMobsListener;
-import com.dreamhorizon.enchantments.listeners.ArmorEquipListener;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -58,6 +58,7 @@ public class EnchantmentsModule extends Module {
             listeners.add(new EntityListener());
             listeners.add(new InventoryListener());
             listeners.add(new AnvilListener());
+            listeners.add(new ArmorEquipListener());
         }
         return listeners;
     }
@@ -87,13 +88,6 @@ public class EnchantmentsModule extends Module {
             MythicMobsListener mythicMobsListener = new MythicMobsListener();
             Bukkit.getPluginManager().registerEvents(mythicMobsListener, DHCore.getPlugin(DHCore.class));
             listeners.add(mythicMobsListener);
-        }
-
-        if (Bukkit.getPluginManager().isPluginEnabled("ArmorEquipEvent")) {
-            // This has to be enabled post-load so we register it, if we enable and disable manually we get an IllegalStateException
-            ArmorEquipListener armorEquipListener = new ArmorEquipListener();
-            Bukkit.getPluginManager().registerEvents(armorEquipListener, DHCore.getPlugin(DHCore.class));
-            listeners.add(armorEquipListener);
         }
     }
     
