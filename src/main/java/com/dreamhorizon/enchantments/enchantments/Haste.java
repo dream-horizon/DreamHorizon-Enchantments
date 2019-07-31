@@ -51,7 +51,7 @@ public class Haste {
                 new PotionEffect(
                     PotionEffectType.SPEED,
                     99999,
-                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.HASTE_1_APLIFIER)))
+                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.HASTE_1_APLIFIER)) - 1)
             );
         }
     }

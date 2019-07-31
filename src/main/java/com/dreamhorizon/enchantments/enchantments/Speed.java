@@ -45,14 +45,14 @@ public class Speed {
                 new PotionEffect(
                     PotionEffectType.SPEED,
                     99999,
-                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.SPEED_1_APLIFIER)))
+                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.SPEED_1_APLIFIER)) - 1)
             );
         } else if(level == 2) {
             equipper.addPotionEffect(
                 new PotionEffect(
                     PotionEffectType.SPEED,
                     99999,
-                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.SPEED_2_APLIFIER)))
+                    Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.SPEED_2_APLIFIER)) - 1)
             );
         }
     }
