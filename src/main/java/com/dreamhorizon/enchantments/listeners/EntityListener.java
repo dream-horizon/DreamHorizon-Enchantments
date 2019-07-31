@@ -20,7 +20,7 @@ package com.dreamhorizon.enchantments.listeners;
 
 import com.dreamhorizon.enchantments.DHEnchantments;
 import com.dreamhorizon.enchantments.enchantments.*;
-import org.bukkit.Material;
+import com.dreamhorizon.enchantments.util.InventoryUtil;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,7 +36,7 @@ public class EntityListener implements Listener {
         if (event.getDamager() instanceof LivingEntity && event.getEntity() instanceof LivingEntity) {
             LivingEntity damager = (LivingEntity) event.getDamager();
             LivingEntity damaged = (LivingEntity) event.getEntity();
-            ItemStack attackItem = getAttackItem(damager);
+            ItemStack attackItem = InventoryUtil.getAttackItem(damager);
             if (attackItem == null) {
                 return;
             }
@@ -76,7 +76,7 @@ public class EntityListener implements Listener {
                     ItemStack chestArmor = equipmentSlot.getChestplate();
                     ItemStack legs = equipmentSlot.getLeggings();
 
-                    ItemStack attackItem = getAttackItem(killer);
+                    ItemStack attackItem = InventoryUtil.getAttackItem(killer);
                     if (attackItem != null) { //Do stuff for enchantments that are used in main hand
 
                     }
@@ -105,23 +105,5 @@ public class EntityListener implements Listener {
                 }
             }
         }
-    }
-
-    private ItemStack getAttackItem(LivingEntity damager) {
-        EntityEquipment equipmentSlot = damager.getEquipment();
-        
-        if (equipmentSlot == null) {
-            return null;
-        }
-        
-        ItemStack attackItem = equipmentSlot.getItemInMainHand();
-        
-        if (attackItem.getType() == Material.AIR
-            || attackItem.getType() == Material.CAVE_AIR
-            || attackItem.getType() == Material.VOID_AIR) {
-            return null;
-        }
-        
-        return attackItem;
     }
 }
