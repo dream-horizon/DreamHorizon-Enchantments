@@ -43,6 +43,7 @@ public class DHEnchantments {
         all.add(EXHAUST);
         all.add(CANNIBALISM);
         all.add(BATTLE_RUSH);
+        all.add(SKILL_SWIPE);
         all.add(HASTE);
         all.add(SPEED);
     }
