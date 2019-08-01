@@ -49,7 +49,11 @@ public enum EnchantmentsConfiguration implements ConfigurationNode {
     HASTE_1_APLIFIER("haste_1_amplifier", "1", "# Level of haste to be applied at level 1"),
     HASTE_2_APLIFIER("haste_2_amplifier", "2", "# Level of haste to be applied at level 2"),
     SPEED_1_APLIFIER("speed_1_amplifier", "1", "# Level of speed to be applied at level 1"),
-    SPEED_2_APLIFIER("speed_2_amplifier", "2", "# Level of speed to be applied at level 2");
+    SPEED_2_APLIFIER("speed_2_amplifier", "2", "# Level of speed to be applied at level 2"),
+    LEVITATE_1_DURATION("levitate_1_duration", "3", "# Duration to make the target levitate at level 1 enchantment"),
+    LEVITATE_2_DURATION("levitate_2_duration", "5", "# Duration to make the target levitate at level 2 enchantment"),
+    LEVITATE_1_CHANCE("levitate_1_chance", "15", "# Chance to levitate for level 1 enchantment."),
+    LEVITATE_2_CHANCE("levitate_2_chance", "20", "# Chance to levitate for level 2 enchantment.");
 
     private final String path;
     private final Object defaultValue;
