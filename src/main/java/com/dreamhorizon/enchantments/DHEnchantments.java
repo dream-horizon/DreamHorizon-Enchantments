@@ -35,6 +35,7 @@ public class DHEnchantments {
     public static final DHEnchantment SKILL_SWIPE = SkillSwipe.getEnchantmentInformation();
     public static final DHEnchantment HASTE = Haste.getEnchantmentInformation();
     public static final DHEnchantment SPEED = Speed.getEnchantmentInformation();
+    public static final DHEnchantment LEVITATE_VICTIM = LevitateVictim.getEnchantmentInformation();
     public static final DHEnchantment BATTLE_RAGE = BattleRage.getEnchantmentInformation();
     
     static {
@@ -47,6 +48,7 @@ public class DHEnchantments {
         all.add(SKILL_SWIPE);
         all.add(HASTE);
         all.add(SPEED);
+        all.add(LEVITATE_VICTIM);
         all.add(BATTLE_RAGE);
     }
 }

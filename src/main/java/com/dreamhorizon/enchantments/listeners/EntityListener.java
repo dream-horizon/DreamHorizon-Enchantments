@@ -56,6 +56,10 @@ public class EntityListener implements Listener {
                 Milky.addMilkyEffect(attackItem, damaged);
             }
 
+            if (attackItem.containsEnchantment(DHEnchantments.LEVITATE_VICTIM)) {
+                LevitateVictim.addLevitateEffect(attackItem, damaged);
+            }
+
             if (attackItem.containsEnchantment(DHEnchantments.SKILL_SWIPE) && damaged instanceof Player && damager instanceof Player) {
                 SkillSwipe.addSkillSwipeEffect(attackItem, damaged, damager);
             }
