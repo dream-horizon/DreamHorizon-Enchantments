@@ -23,7 +23,7 @@ public class Haste {
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "haste"),
             "Haste",
             1,
-            2,
+            1,
             EnchantmentTarget.TOOL,
             false,
             false,

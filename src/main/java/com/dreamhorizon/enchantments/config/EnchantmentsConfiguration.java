@@ -54,6 +54,8 @@ public enum EnchantmentsConfiguration implements ConfigurationNode {
     LEVITATE_2_DURATION("levitate_2_duration", "5", "# Duration to make the target levitate at level 2 enchantment"),
     LEVITATE_1_CHANCE("levitate_1_chance", "15", "# Chance to levitate for level 1 enchantment."),
     LEVITATE_2_CHANCE("levitate_2_chance", "20", "# Chance to levitate for level 2 enchantment.");
+    BATTLE_RAGE_1_SPEED_DURATION("battle_rush_1_speed_duration", "3", "# Duration of the strength effect on enemy death (In seconds)."),
+    BATTLE_RAGE_2_SPEED_DURATION("battle_rush_2_speed_duration", "5", "# Duration of the strength effect on enemy death (In seconds).");
 
     private final String path;
     private final Object defaultValue;
