@@ -49,7 +49,9 @@ public enum EnchantmentsConfiguration implements ConfigurationNode {
     HASTE_1_APLIFIER("haste_1_amplifier", "1", "# Level of haste to be applied at level 1"),
     HASTE_2_APLIFIER("haste_2_amplifier", "2", "# Level of haste to be applied at level 2"),
     SPEED_1_APLIFIER("speed_1_amplifier", "1", "# Level of speed to be applied at level 1"),
-    SPEED_2_APLIFIER("speed_2_amplifier", "2", "# Level of speed to be applied at level 2");
+    SPEED_2_APLIFIER("speed_2_amplifier", "2", "# Level of speed to be applied at level 2"),
+    BATTLE_RAGE_1_SPEED_DURATION("battle_rush_1_speed_duration", "3", "# Duration of the strength effect on enemy death (In seconds)."),
+    BATTLE_RAGE_2_SPEED_DURATION("battle_rush_2_speed_duration", "5", "# Duration of the strength effect on enemy death (In seconds).");
 
     private final String path;
     private final Object defaultValue;

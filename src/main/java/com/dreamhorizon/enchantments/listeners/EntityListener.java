@@ -78,7 +78,9 @@ public class EntityListener implements Listener {
 
                     ItemStack attackItem = getAttackItem(killer);
                     if (attackItem != null) { //Do stuff for enchantments that are used in main hand
-
+                        if (attackItem.containsEnchantment(DHEnchantments.BATTLE_RAGE)) {
+                            BattleRage.addBattleRageEffect(attackItem, killer);
+                        }
                     }
 
                     if (boots != null) { //Do stuff for enchantments that are on boots
