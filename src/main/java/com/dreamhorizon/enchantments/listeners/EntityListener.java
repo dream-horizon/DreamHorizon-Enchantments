@@ -63,6 +63,10 @@ public class EntityListener implements Listener {
             if (attackItem.containsEnchantment(DHEnchantments.SKILL_SWIPE) && damaged instanceof Player && damager instanceof Player) {
                 SkillSwipe.addSkillSwipeEffect(attackItem, damaged, damager);
             }
+
+            if (attackItem.containsEnchantment(DHEnchantments.STARVE)) {
+                Starve.addStarveEffect(attackItem, damaged);
+            }
         }
     }
     
