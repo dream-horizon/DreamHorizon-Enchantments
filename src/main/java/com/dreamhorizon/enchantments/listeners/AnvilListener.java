@@ -18,13 +18,16 @@
 
 package com.dreamhorizon.enchantments.listeners;
 
+import com.dreamhorizon.core.DHCore;
 import com.dreamhorizon.enchantments.EnchantmentsHandler;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
@@ -35,8 +38,9 @@ public class AnvilListener implements Listener {
     @EventHandler
     public void onPrepareAnvilEvent(PrepareAnvilEvent event) {
         // Check for three items in the anvil,
-        ItemStack slotA = event.getInventory().getItem(0);
-        ItemStack slotB = event.getInventory().getItem(1);
+        final AnvilInventory inventory = event.getInventory();
+        ItemStack slotA = inventory.getItem(0);
+        ItemStack slotB = inventory.getItem(1);
         ItemStack slotResult = event.getResult();
         if (slotA == null || slotB == null) {
             return;
@@ -52,7 +56,7 @@ public class AnvilListener implements Listener {
         if (slotB.getType() == Material.ENCHANTED_BOOK && slotB.hasItemMeta() && slotB.getItemMeta() != null && slotB.getItemMeta() instanceof EnchantmentStorageMeta) {
             slotBBookMeta = (EnchantmentStorageMeta) slotB.getItemMeta();
         }
-        boolean addXPPrice = true;
+        boolean addXPPrice = false;
         boolean vanillaAnvil = true;
         
         // both of them are books
@@ -68,6 +72,7 @@ public class AnvilListener implements Listener {
             slotResult = slotA.clone();
             for (Enchantment enchantment : enchantments) {
                 if (enchantment instanceof DHEnchantment) {
+                    boolean addXP = false;
                     DHEnchantment dhEnchantment = (DHEnchantment) enchantment;
                     vanillaAnvil = false;
                     int resultingLevel;
@@ -76,9 +81,13 @@ public class AnvilListener implements Listener {
                         int bLevel = slotBBookMeta.getStoredEnchantLevel(dhEnchantment);
                         if (aLevel == bLevel) {
                             resultingLevel = aLevel + 1;
+                            addXP = true;
+                            if (resultingLevel > dhEnchantment.getMaxLevel()) {
+                                resultingLevel = dhEnchantment.getMaxLevel();
+                                addXP = false;
+                            }
                         } else {
                             resultingLevel = Math.max(aLevel, bLevel);
-                            addXPPrice = false;
                         }
                     } else if (slotABookMeta.getStoredEnchants().containsKey(dhEnchantment)) {
                         resultingLevel = slotABookMeta.getStoredEnchantLevel(dhEnchantment);
@@ -87,9 +96,8 @@ public class AnvilListener implements Listener {
                     } else {
                         continue;
                     }
-                    if (resultingLevel > dhEnchantment.getMaxLevel()) {
-                        resultingLevel = dhEnchantment.getMaxLevel();
-                        addXPPrice = false;
+                    if (addXP && !addXPPrice) {
+                        addXPPrice = true;
                     }
                     if (dhEnchantment.canEnchantItem(slotResult)) {
                         slotResult.addUnsafeEnchantment(dhEnchantment, resultingLevel);
@@ -117,6 +125,7 @@ public class AnvilListener implements Listener {
             }
             for (Enchantment enchantment : enchantments) {
                 if (enchantment instanceof DHEnchantment) {
+                    boolean addXP = false;
                     DHEnchantment dhEnchantment = (DHEnchantment) enchantment;
                     vanillaAnvil = false;
                     int resultingLevel;
@@ -125,11 +134,15 @@ public class AnvilListener implements Listener {
                         int bLevel = slotBBookMeta.getStoredEnchantLevel(dhEnchantment);
                         if (aLevel == bLevel) {
                             resultingLevel = aLevel + 1;
+                            addXP = true;
+                            if (resultingLevel > dhEnchantment.getMaxLevel()) {
+                                resultingLevel = dhEnchantment.getMaxLevel();
+                                addXP = false;
+                            }
                         } else {
                             // Pick the bigger of the two enchantments.
                             // This is expected vanilla behavior.
                             resultingLevel = Math.max(aLevel, bLevel);
-                            addXPPrice = false;
                         }
                     } else if (slotA.getEnchantments().containsKey(dhEnchantment)) {
                         resultingLevel = slotA.getEnchantmentLevel(dhEnchantment);
@@ -138,9 +151,8 @@ public class AnvilListener implements Listener {
                     } else {
                         continue;
                     }
-                    if (resultingLevel > dhEnchantment.getMaxLevel()) {
-                        resultingLevel = dhEnchantment.getMaxLevel();
-                        addXPPrice = false;
+                    if (addXP && !addXPPrice) {
+                        addXPPrice = true;
                     }
                     if (dhEnchantment.canEnchantItem(slotResult)) {
                         slotResult.addUnsafeEnchantment(dhEnchantment, resultingLevel);
@@ -150,7 +162,6 @@ public class AnvilListener implements Listener {
         } else {
             // This means none of the arguments are a book, but now we need to filter out illegal items
             if (slotB.getType() != slotA.getType()) {
-                event.setResult(new ItemStack(Material.AIR));
                 return;
             }
             // return if the enchants are incompatible.
@@ -167,6 +178,7 @@ public class AnvilListener implements Listener {
             }
             for (Enchantment enchantment : enchantments) {
                 if (enchantment instanceof DHEnchantment) {
+                    boolean addXP = false;
                     DHEnchantment dhEnchantment = (DHEnchantment) enchantment;
                     vanillaAnvil = false;
                     int resultingLevel;
@@ -175,11 +187,15 @@ public class AnvilListener implements Listener {
                         int bLevel = slotB.getEnchantmentLevel(dhEnchantment);
                         if (aLevel == bLevel) {
                             resultingLevel = aLevel + 1;
+                            addXP = true;
+                            if (resultingLevel > dhEnchantment.getMaxLevel()) {
+                                resultingLevel = dhEnchantment.getMaxLevel();
+                                addXP = false;
+                            }
                         } else {
                             // Pick the bigger of the two enchantments.
                             // This is expected vanilla behavior.
                             resultingLevel = Math.max(aLevel, bLevel);
-                            addXPPrice = false;
                         }
                     } else if (slotA.getEnchantments().containsKey(dhEnchantment)) {
                         resultingLevel = slotA.getEnchantmentLevel(dhEnchantment);
@@ -189,9 +205,8 @@ public class AnvilListener implements Listener {
                         // This shouldn't happen but anyway just iterate over it again for the next enchant, no items have it.
                         continue;
                     }
-                    if (resultingLevel > dhEnchantment.getMaxLevel()) {
-                        resultingLevel = dhEnchantment.getMaxLevel();
-                        addXPPrice = false;
+                    if (addXP && !addXPPrice) {
+                        addXPPrice = true;
                     }
                     if (dhEnchantment.canEnchantItem(slotResult)) {
                         slotResult.addUnsafeEnchantment(dhEnchantment, resultingLevel);
@@ -202,16 +217,22 @@ public class AnvilListener implements Listener {
         if (vanillaAnvil) {
             return;
         }
+        inventory.setMaximumRepairCost(50);
         if (addXPPrice) {
-            event.getInventory().setMaximumRepairCost(50);
-            event.getInventory().setRepairCost(event.getInventory().getRepairCost() + 30);
+            inventory.setRepairCost(inventory.getRepairCost() + 30);
         } else {
             // Unfortuantely we need to add 1 level to allow this to work, free operations don't exist :(
-            event.getInventory().setMaximumRepairCost(50);
-            event.getInventory().setRepairCost(event.getInventory().getRepairCost() + 1);
+            inventory.setRepairCost(inventory.getRepairCost() + 1);
         }
         EnchantmentsHandler.getInstance().rebuildMeta(slotResult);
         event.setResult(slotResult);
-        
+        // update the inventory 1 tick later, this should hopefully fix some graphical bugs for the user.
+        // This is hard to test since it's on a tick basis, If someone can change something quicker than a tick (very close to impossible)
+        // Then it might cause an issue,
+        Bukkit.getScheduler().runTask(DHCore.getPlugin(DHCore.class), () -> {
+            inventory.setMaximumRepairCost(inventory.getMaximumRepairCost());
+            inventory.setRepairCost(inventory.getRepairCost());
+            inventory.setItem(2, inventory.getItem(2));
+        });
     }
 }
