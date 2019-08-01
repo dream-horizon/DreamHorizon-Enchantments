@@ -39,16 +39,16 @@ public class LevitateVictim {
     public static void addLevitateEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.LEVITATE_VICTIM);
         double chance = NumberUtil.getRandomNumber(0, 100);
-        int duration = 0;
+        int duration;
         EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         if (level == 1) {
             if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.LEVITATE_1_CHANCE))) {
-                duration =+ Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.LEVITATE_1_DURATION));
+                duration =+ Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.LEVITATE_1_DURATION)) * 20;
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, duration, 0));
             }
         } else if (level == 2) {
             if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.LEVITATE_2_CHANCE))) {
-                duration =+ Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.LEVITATE_2_DURATION));
+                duration =+ Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.LEVITATE_2_DURATION)) * 20;
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, duration, 0));
             }
         }

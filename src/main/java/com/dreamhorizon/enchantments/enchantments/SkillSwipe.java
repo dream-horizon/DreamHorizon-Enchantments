@@ -60,8 +60,8 @@ public class SkillSwipe {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.SKILL_SWIPE);
         Player damagedAsPlayer = ((Player) damaged);
         Player damagerAsPlayer = ((Player) damager);
-        float damagedExperience = damagedAsPlayer.getExp();
-        float damagerExperience = damagerAsPlayer.getExp();
+        int damagedExperience = damagedAsPlayer.getTotalExperience();
+        int damagerExperience = damagerAsPlayer.getTotalExperience();
         double chance = NumberUtil.getRandomNumber(0, 100);
         EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
 
@@ -82,8 +82,8 @@ public class SkillSwipe {
             }
         }
 
-        damagedAsPlayer.setExp(damagedExperience);
-        damagerAsPlayer.setExp(damagerExperience);
+        damagedAsPlayer.setTotalExperience(damagedExperience);
+        damagerAsPlayer.setTotalExperience(damagerExperience);
     }
 }
 
