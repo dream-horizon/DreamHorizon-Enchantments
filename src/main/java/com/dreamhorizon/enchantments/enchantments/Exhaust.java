@@ -69,15 +69,15 @@ public class Exhaust {
         EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         if (level == 1) {
             if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_1_SLOW_CHANCE))) {
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_1_SLOW_DURATION)), 1));
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_1_SLOW_DURATION)), 0));
             }
         } else if (level == 2) {
             if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_2_SLOW_CHANCE))) {
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_2_SLOW_DURATION)), 1));
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_2_SLOW_DURATION)), 0));
             }
         } else if (level == 3) {
             if (chance <= Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_3_SLOW_CHANCE))) {
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_3_SLOW_DURATION)), 1));
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.EXHAUST_3_SLOW_DURATION)), 0));
             }
         }
     }
