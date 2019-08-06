@@ -8,7 +8,6 @@ import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -26,7 +25,6 @@ public class BattleRage {
             "Gain additional strength when killing an enemy",
             1,
             2,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),

@@ -27,7 +27,6 @@ public class LevitateVictim {
             "Chance to levitate your enemy on hit",
             1,
             2,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),

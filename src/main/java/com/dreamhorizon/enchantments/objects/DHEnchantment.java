@@ -35,7 +35,6 @@ public final class DHEnchantment extends Enchantment {
     private final int minLevel;
     private final boolean cursed;
     private final boolean treasure;
-    private final EnchantmentTarget target;
     private final List<Enchantment> conflicts;
     private final List<Material> enchantableItems;
     
@@ -46,7 +45,6 @@ public final class DHEnchantment extends Enchantment {
         String description,
         int minLevel,
         int maxLevel,
-        EnchantmentTarget target,
         boolean cursed,
         boolean treasure,
         List<Enchantment> conflicts,
@@ -57,7 +55,6 @@ public final class DHEnchantment extends Enchantment {
         this.description = description;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
-        this.target = target;
         this.cursed = cursed;
         this.treasure = treasure;
         this.conflicts = conflicts;
@@ -84,7 +81,7 @@ public final class DHEnchantment extends Enchantment {
     @Override
     @NotNull
     public EnchantmentTarget getItemTarget() {
-        return target;
+        return EnchantmentTarget.ALL;
     }
     
     @Override
@@ -109,11 +106,11 @@ public final class DHEnchantment extends Enchantment {
         }
         return enchantableItems.contains(item.getType());
     }
-
+    
     public String getGoesOn() {
         return goesOn;
     }
-
+    
     public String getDescription() {
         return description;
     }

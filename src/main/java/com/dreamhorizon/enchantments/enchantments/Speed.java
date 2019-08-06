@@ -26,7 +26,6 @@ public class Speed {
             "Gain a speed boost when equipped",
             1,
             1,
-            EnchantmentTarget.ARMOR_FEET,
             false,
             false,
             new ArrayList<>(),

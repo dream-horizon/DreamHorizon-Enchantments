@@ -44,7 +44,6 @@ public class LifeLeech {
             "Steal life per hit",
             1,
             2,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),

@@ -47,7 +47,6 @@ public class Cannibalism {
             "Gain food and health upon killing an enemy",
             1,
             2,
-            EnchantmentTarget.ARMOR_HEAD,
             false,
             false,
             new ArrayList<>(),

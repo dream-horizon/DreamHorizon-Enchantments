@@ -45,7 +45,6 @@ public class SkillSwipe {
             "Chance to Steal experience from your target",
             1,
             3,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),
