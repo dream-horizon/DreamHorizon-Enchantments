@@ -40,6 +40,8 @@ public class Exhaust {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "exhaust"),
             "Exhaust",
+            "Swords, Axes, Bow, Crossbow",
+            "Chance to slow enemy on hit",
             1,
             3,
             EnchantmentTarget.WEAPON,

@@ -22,6 +22,8 @@ public class BattleRush {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "battle_rush"),
             "Battle Rush",
+            "Boots",
+            "Gain speed after killing an enemy",
             1,
             2,
             EnchantmentTarget.ARMOR_FEET,

@@ -22,6 +22,8 @@ public class BattleRage {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "battle_rage"),
             "Battle Rage",
+            "Axes",
+            "Gain additional strength when killing an enemy",
             1,
             2,
             EnchantmentTarget.WEAPON,

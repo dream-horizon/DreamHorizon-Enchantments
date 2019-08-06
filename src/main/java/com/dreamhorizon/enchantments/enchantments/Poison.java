@@ -40,6 +40,8 @@ public class Poison {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "poison"),
             "Poison",
+            "Axes, Swords",
+            "Poison your enemy on hit. (HEALS UNDEAD)",
             1,
             3,
             EnchantmentTarget.WEAPON,

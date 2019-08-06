@@ -22,6 +22,8 @@ public class Starve {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "starve"),
             "Starve",
+            "Axes, Swords",
+            "Starve your opponent on hit",
             1,
             2,
             EnchantmentTarget.WEAPON,

@@ -41,6 +41,8 @@ public class SkillSwipe {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "skill_swipe"),
             "Skill Swipe",
+            "Axes, Swords",
+            "Chance to Steal experience from your target",
             1,
             3,
             EnchantmentTarget.WEAPON,

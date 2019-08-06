@@ -131,4 +131,25 @@ public class EnchantCommand extends DHCommand {
         // loadLootTables will also reload them.
         LootTableHandler.getInstance().loadLootTables();
     }
+
+    @Subcommand("info")
+    @CommandPermission("dhenchantments.enchant.info")
+    @CommandCompletion("@dhenchantments")
+    public static void info(CommandSender sender, DHEnchantment enchantment) {
+        if (enchantment == null) {
+            // TODO: Customize message
+            sender.sendMessage("You need to specify an enchant (/dhenchant info <enchant>)");
+        } else {
+            int maxLevel = enchantment.getMaxLevel();
+            String name = enchantment.getName();
+            String goesOn = enchantment.getGoesOn();
+            String description = enchantment.getDescription();
+            sender.sendMessage("===================");
+            sender.sendMessage("Name: " + name);
+            sender.sendMessage("Description: " + description);
+            sender.sendMessage("Max Level: " + maxLevel);
+            sender.sendMessage("Applies to: " + goesOn);
+            sender.sendMessage("===================");
+        }
+    }
 }
