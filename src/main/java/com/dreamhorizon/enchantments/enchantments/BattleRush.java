@@ -26,7 +26,6 @@ public class BattleRush {
             "Gain speed after killing an enemy",
             1,
             2,
-            EnchantmentTarget.ARMOR_FEET,
             false,
             false,
             new ArrayList<>(),

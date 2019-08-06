@@ -8,7 +8,6 @@ import com.dreamhorizon.enchantments.config.EnchantmentsConfiguration;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -26,7 +25,6 @@ public class Starve {
             "Starve your opponent on hit",
             1,
             2,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),
@@ -44,7 +42,7 @@ public class Starve {
             )
         );
     }
-
+    
     public static void addStarveEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.STARVE);
         int duration = 0;
@@ -56,5 +54,5 @@ public class Starve {
         }
         damaged.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, duration, 0));
     }
-
+    
 }

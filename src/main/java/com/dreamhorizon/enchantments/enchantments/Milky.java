@@ -46,7 +46,6 @@ public class Milky {
             "Chance to remove buffs from opponent on hit",
             1,
             2,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),

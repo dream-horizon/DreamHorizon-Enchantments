@@ -26,7 +26,6 @@ public class Haste {
             "Gain additional speed when the enchanted tool is in the main hand",
             1,
             1,
-            EnchantmentTarget.TOOL,
             false,
             false,
             new ArrayList<>(),

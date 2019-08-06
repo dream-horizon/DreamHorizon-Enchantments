@@ -44,7 +44,6 @@ public class Poison {
             "Poison your enemy on hit. (HEALS UNDEAD)",
             1,
             3,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),

@@ -44,7 +44,6 @@ public class Exhaust {
             "Chance to slow enemy on hit",
             1,
             3,
-            EnchantmentTarget.WEAPON,
             false,
             false,
             new ArrayList<>(),
