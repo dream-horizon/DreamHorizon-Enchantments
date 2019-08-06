@@ -35,9 +35,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.apache.commons.lang3.text.WordUtils;
-
-import java.util.List;
 
 @CommandAlias("dhenchantments|dhe|dhenchantment|dhenchant|dhenchants|dreamhorizonenchants")
 public class EnchantCommand extends DHCommand {
