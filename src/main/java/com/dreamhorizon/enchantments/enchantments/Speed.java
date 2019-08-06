@@ -32,7 +32,17 @@ public class Speed {
                 Material.LEATHER_BOOTS,
                 Material.IRON_BOOTS,
                 Material.GOLDEN_BOOTS,
-                Material.DIAMOND_BOOTS
+                Material.DIAMOND_BOOTS,
+                Material.WOODEN_PICKAXE,
+                Material.STONE_PICKAXE,
+                Material.IRON_PICKAXE,
+                Material.GOLDEN_PICKAXE,
+                Material.DIAMOND_PICKAXE,
+                Material.WOODEN_HOE, Material.WOODEN_SHOVEL,
+                Material.STONE_HOE, Material.STONE_SHOVEL,
+                Material.IRON_HOE, Material.IRON_SHOVEL,
+                Material.GOLDEN_HOE, Material.GOLDEN_SHOVEL,
+                Material.DIAMOND_HOE, Material.DIAMOND_SHOVEL
             )
         );
     }
