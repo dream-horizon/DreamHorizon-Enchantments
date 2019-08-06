@@ -23,7 +23,7 @@ public class Starve {
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "starve"),
             "Starve",
             1,
-            1,
+            2,
             EnchantmentTarget.WEAPON,
             false,
             false,
@@ -43,7 +43,7 @@ public class Starve {
         );
     }
 
-    public static void addStarveEffect(ItemStack attackItem, LivingEntity damager) {
+    public static void addStarveEffect(ItemStack attackItem, LivingEntity damaged) {
         int level = attackItem.getEnchantmentLevel(DHEnchantments.STARVE);
         int duration = 0;
         EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
@@ -52,7 +52,7 @@ public class Starve {
         } else if (level == 2) {
             duration = 20 * Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.STARVE_2_DURATION));
         }
-        damager.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, duration, 0));
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, duration, 0));
     }
 
 }
