@@ -35,6 +35,7 @@ import com.dreamhorizon.enchantments.listeners.ArmorEquipListener;
 import com.dreamhorizon.enchantments.listeners.EntityListener;
 import com.dreamhorizon.enchantments.listeners.InventoryListener;
 import com.dreamhorizon.enchantments.listeners.MythicMobsListener;
+import com.dreamhorizon.enchantments.listeners.MainhandEquipEvent;
 import com.dreamhorizon.enchantments.objects.DHEnchantment;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -59,6 +60,7 @@ public class EnchantmentsModule extends Module {
             listeners.add(new InventoryListener());
             listeners.add(new AnvilListener());
             listeners.add(new ArmorEquipListener());
+            listeners.add(new MainhandEquipEvent());
         }
         return listeners;
     }

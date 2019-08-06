@@ -36,22 +36,22 @@ public class Haste {
                 Material.IRON_PICKAXE,
                 Material.GOLDEN_PICKAXE,
                 Material.DIAMOND_PICKAXE,
-                Material.WOODEN_HOE, Material.WOODEN_SHOVEL,
-                Material.STONE_HOE, Material.STONE_SHOVEL,
-                Material.IRON_HOE, Material.IRON_SHOVEL,
-                Material.GOLDEN_HOE, Material.GOLDEN_SHOVEL,
-                Material.DIAMOND_HOE, Material.DIAMOND_SHOVEL
+                Material.WOODEN_SHOVEL,
+                Material.STONE_SHOVEL,
+                Material.IRON_SHOVEL,
+                Material.GOLDEN_SHOVEL,
+                Material.DIAMOND_SHOVEL
             )
         );
     }
 
     public static void applyHasteEffect(ItemStack equippedItem, LivingEntity equipper) {
-        int level = equippedItem.getEnchantmentLevel(DHEnchantments.EXHAUST);
+        int level = equippedItem.getEnchantmentLevel(DHEnchantments.HASTE);
         EnumConfiguration enchantmentsConfig = EnchantmentsHandler.getInstance().getEnchantmentConfiguration();
         if (level == 1) {
             equipper.addPotionEffect(
                 new PotionEffect(
-                    PotionEffectType.SPEED,
+                    PotionEffectType.FAST_DIGGING,
                     99999,
                     Integer.parseInt((String) enchantmentsConfig.get(EnchantmentsConfiguration.HASTE_1_APLIFIER)) - 1)
             );
@@ -59,6 +59,6 @@ public class Haste {
     }
 
     public static void removeHasteEffect(LivingEntity equipper) {
-        equipper.removePotionEffect(PotionEffectType.SPEED);
+        equipper.removePotionEffect(PotionEffectType.FAST_DIGGING);
     }
 }
