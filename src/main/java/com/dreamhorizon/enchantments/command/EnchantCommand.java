@@ -35,6 +35,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
+import org.apache.commons.lang3.text.WordUtils;
+
+import java.util.List;
 
 @CommandAlias("dhenchantments|dhe|dhenchantment|dhenchant|dhenchants|dreamhorizonenchants")
 public class EnchantCommand extends DHCommand {
@@ -130,5 +133,26 @@ public class EnchantCommand extends DHCommand {
     public static void reload(CommandSender sender) {
         // loadLootTables will also reload them.
         LootTableHandler.getInstance().loadLootTables();
+    }
+
+    @Subcommand("info")
+    @CommandPermission("dhenchantments.enchant.info")
+    @CommandCompletion("@dhenchantments")
+    public static void info(CommandSender sender, DHEnchantment enchantment) {
+        if (enchantment == null) {
+            // TODO: Customize message
+            sender.sendMessage("You need to specify an enchant (/dhenchant <enchant>)");
+        } else {
+            int maxLevel = enchantment.getMaxLevel();
+            String name = enchantment.getName();
+            String goesOn = enchantment.getGoesOn();
+            String description = enchantment.getDescription();
+            sender.sendMessage("===================");
+            sender.sendMessage("Name: " + name);
+            sender.sendMessage("Description: " + description);
+            sender.sendMessage("Max Level: " + maxLevel);
+            sender.sendMessage("Applies to: " + goesOn);
+            sender.sendMessage("===================");
+        }
     }
 }

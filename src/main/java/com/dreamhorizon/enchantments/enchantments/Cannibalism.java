@@ -43,6 +43,8 @@ public class Cannibalism {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "cannibalism"),
             "Cannibalism",
+            "Helmets",
+            "Gain food and health upon killing an enemy",
             1,
             2,
             EnchantmentTarget.ARMOR_HEAD,

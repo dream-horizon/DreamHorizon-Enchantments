@@ -42,6 +42,8 @@ public class Milky {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "milky"),
             "Milky",
+            "Swords, Axes, Bow, Crossbow",
+            "Chance to remove buffs from opponent on hit",
             1,
             2,
             EnchantmentTarget.WEAPON,

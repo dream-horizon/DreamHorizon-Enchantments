@@ -22,6 +22,8 @@ public class Speed {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "speed"),
             "Speed",
+            "Boots",
+            "Gain a speed boost when equipped",
             1,
             1,
             EnchantmentTarget.ARMOR_FEET,

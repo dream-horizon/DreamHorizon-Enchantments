@@ -40,6 +40,8 @@ public class LifeLeech {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "life_leech"),
             "Life Leech",
+            "Swords",
+            "Steal life per hit",
             1,
             2,
             EnchantmentTarget.WEAPON,

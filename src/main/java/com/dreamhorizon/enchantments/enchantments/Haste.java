@@ -22,6 +22,8 @@ public class Haste {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "haste"),
             "Haste",
+            "Pickaxes, Hoes, Shovels",
+            "Gain additional speed when the enchanted tool is in the main hand",
             1,
             1,
             EnchantmentTarget.TOOL,

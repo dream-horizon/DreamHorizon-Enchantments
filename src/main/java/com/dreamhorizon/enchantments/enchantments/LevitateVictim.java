@@ -23,6 +23,8 @@ public class LevitateVictim {
         return new DHEnchantment(
             new NamespacedKey(DHCore.getPlugin(DHCore.class), "levitate_victim"),
             "Levitate Victim",
+            "Bow, Crossbow",
+            "Chance to levitate your enemy on hit",
             1,
             2,
             EnchantmentTarget.WEAPON,

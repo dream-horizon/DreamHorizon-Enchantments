@@ -29,6 +29,8 @@ import java.util.List;
 
 public final class DHEnchantment extends Enchantment {
     private final String name;
+    private final String goesOn;
+    private final String description;
     private final int maxLevel;
     private final int minLevel;
     private final boolean cursed;
@@ -40,6 +42,8 @@ public final class DHEnchantment extends Enchantment {
     public DHEnchantment(
         NamespacedKey key,
         String name,
+        String goesOn,
+        String description,
         int minLevel,
         int maxLevel,
         EnchantmentTarget target,
@@ -49,6 +53,8 @@ public final class DHEnchantment extends Enchantment {
         List<Material> enchantableItems) {
         super(key);
         this.name = name;
+        this.goesOn = goesOn;
+        this.description = description;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.target = target;
@@ -102,5 +108,13 @@ public final class DHEnchantment extends Enchantment {
             return true;
         }
         return enchantableItems.contains(item.getType());
+    }
+
+    public String getGoesOn() {
+        return goesOn;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
