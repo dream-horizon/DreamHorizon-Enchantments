@@ -138,7 +138,7 @@ public class EnchantCommand extends DHCommand {
     public static void info(CommandSender sender, DHEnchantment enchantment) {
         if (enchantment == null) {
             // TODO: Customize message
-            sender.sendMessage("You need to specify an enchant (/dhenchant <enchant>)");
+            sender.sendMessage("You need to specify an enchant (/dhenchant info <enchant>)");
         } else {
             int maxLevel = enchantment.getMaxLevel();
             String name = enchantment.getName();
